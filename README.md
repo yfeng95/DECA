@@ -73,7 +73,8 @@ The left figure compares the cumulative error of our approach and other recent m
 <p align="left"> 
 <img src="Doc/images/DECA_evaluation_github.png">
 </p>
-For more details of the evaluation, please check our [arXiv paper](https://arxiv.org/abs/2012.04012).
+
+For more details of the evaluation, please check our [arXiv paper](https://arxiv.org/abs/2012.04012). 
 
 ## Citation
 If you find our work useful to your research, please consider citing:

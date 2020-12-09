@@ -7,7 +7,7 @@
 
 This is the official Pytorch implementation of DECA. 
 
-DECA reconstructs a 3D head model with detailed facial geometry from a single input image. The resulting 3D head model can be easily animated. Please refer to the [arXiv paper]() for more details.
+DECA reconstructs a 3D head model with detailed facial geometry from a single input image. The resulting 3D head model can be easily animated. Please refer to the [arXiv paper](https://arxiv.org/abs/2012.04012) for more details.
 
 The main features:
 
@@ -73,7 +73,7 @@ The left figure compares the cumulative error of our approach and other recent m
 <p align="left"> 
 <img src="Doc/images/DECA_evaluation_github.png">
 </p>
-For more details of the evaluation, please check our [arXiv paper]().
+For more details of the evaluation, please check our [arXiv paper](https://arxiv.org/abs/2012.04012).
 
 ## Citation
 If you find our work useful to your research, please consider citing:

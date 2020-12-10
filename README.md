@@ -48,7 +48,7 @@ Clone the repo:
     ```bash
     python demos/demo_reconstruct.py -i TestSamples/examples --saveDepth True --saveObj True
     ```   
-    to visualize the predicted 2D landmanks, 3D landmarks (red means non-visible points), coarse geometry, detailed geoemtry, and depth.   
+    to visualize the predicted 2D landmanks, 3D landmarks (red means non-visible points), coarse geometry, detailed geometry, and depth.   
     <p align="center">   
     <img src="TestSamples/examples/results/id04657-PPHljWCZ53c-000565_inputs_inputs_vis.jpg">
     </p>  

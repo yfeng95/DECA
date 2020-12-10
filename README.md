@@ -94,4 +94,19 @@ If you find our work useful to your research, please consider citing:
 This code and model are available for non-commercial scientific research purposes as defined in the [LICENSE](https://github.com/YadiraF/DECA/blob/master/LICENSE) file.
 By downloading and using the code and model you agree to the terms in the [LICENSE](https://github.com/YadiraF/DECA/blob/master/LICENSE). 
 
-<!-- ## Acknowledgements -->
+## Acknowledgements
+For functions or scripts that are based on external sources, we acknowledge the origin individually in each file.  
+Here are some great resources we benefit:  
+[FLAME_PyTorch](https://github.com/soubhiksanyal/FLAME_PyTorch), [TF_FLAME](https://github.com/TimoBolkart/TF_FLAME) for FLAME model  
+[Pytorch3D](https://pytorch3d.org/), [neural_renderer](https://github.com/daniilidis-group/neural_renderer), [SoftRas](https://github.com/ShichenLiu/SoftRas) for rendering  
+[kornia](https://github.com/kornia/kornia) for image/rotation processing  
+[face-alignment](https://github.com/1adrianb/face-alignment) for cropping  
+
+We would also like to thank other recent public 3D face reconstruction works that allow us to easily perform quantitative and qualitative comparisons :)  
+[Deep3DFaceReconstruction](https://github.com/microsoft/Deep3DFaceReconstruction/blob/master/renderer/rasterize_triangles.py), 
+[RingNet](https://github.com/soubhiksanyal/RingNet), 
+[Nonlinear_Face_3DMM](https://github.com/tranluan/Nonlinear_Face_3DMM),
+[3DDFA-v2](https://github.com/cleardusk/3DDFA_V2),
+[extreme_3d_faces](https://github.com/anhttran/extreme_3d_faces),
+[facescape](https://github.com/zhuhao-nju/facescape)
+<!-- 3DMMasSTN, DenseReg, 3dmm_cnn, vrn, pix2vertex -->

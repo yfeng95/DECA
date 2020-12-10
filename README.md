@@ -108,10 +108,11 @@ By downloading and using the code and model you agree to the terms in the [LICEN
 ## Acknowledgements
 For functions or scripts that are based on external sources, we acknowledge the origin individually in each file.  
 Here are some great resources we benefit:  
-[FLAME_PyTorch](https://github.com/soubhiksanyal/FLAME_PyTorch), [TF_FLAME](https://github.com/TimoBolkart/TF_FLAME) for FLAME model  
-[Pytorch3D](https://pytorch3d.org/), [neural_renderer](https://github.com/daniilidis-group/neural_renderer), [SoftRas](https://github.com/ShichenLiu/SoftRas) for rendering  
-[kornia](https://github.com/kornia/kornia) for image/rotation processing  
-[face-alignment](https://github.com/1adrianb/face-alignment) for cropping   
+- [FLAME_PyTorch](https://github.com/soubhiksanyal/FLAME_PyTorch) and [TF_FLAME](https://github.com/TimoBolkart/TF_FLAME) for the FLAME model  
+- [Pytorch3D](https://pytorch3d.org/), [neural_renderer](https://github.com/daniilidis-group/neural_renderer), [SoftRas](https://github.com/ShichenLiu/SoftRas) for rendering  
+- [kornia](https://github.com/kornia/kornia) for image/rotation processing  
+- [face-alignment](https://github.com/1adrianb/face-alignment) for cropping   
+
 We would also like to thank other recent public 3D face reconstruction works that allow us to easily perform quantitative and qualitative comparisons :)  
 [RingNet](https://github.com/soubhiksanyal/RingNet), 
 [Deep3DFaceReconstruction](https://github.com/microsoft/Deep3DFaceReconstruction/blob/master/renderer/rasterize_triangles.py), 

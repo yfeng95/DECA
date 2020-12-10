@@ -8,9 +8,52 @@ from scipy.ndimage import morphology
 from skimage.io import imsave
 import cv2
 
-# --------------------------------------- save obj
+def upsample_mesh(vertices, normals, faces, displacement_map, texture_map, dense_template):
+    ''' upsampling coarse mesh (with displacment map)
+        vertices: vertices of coarse mesh, [nv, 3]
+        normals: vertex normals, [nv, 3]
+        faces: faces of coarse mesh, [nf, 3]
+        texture_map: texture map, [256, 256, 3]
+        displacement_map: displacment map, [256, 256]
+        dense_template: 
+    Returns: 
+        dense_vertices: upsampled vertices with details, [number of dense vertices, 3]
+        dense_colors: vertex color, [number of dense vertices, 3]
+        dense_faces: [number of dense faces, 3]
+    '''
+    img_size = dense_template['img_size']
+    dense_faces = dense_template['f']
+    x_coords = dense_template['x_coords']
+    y_coords = dense_template['y_coords']
+    valid_pixel_ids = dense_template['valid_pixel_ids']
+    valid_pixel_3d_faces = dense_template['valid_pixel_3d_faces']
+    valid_pixel_b_coords = dense_template['valid_pixel_b_coords']
+
+    pixel_3d_points = vertices[valid_pixel_3d_faces[:, 0], :] * valid_pixel_b_coords[:, 0][:, np.newaxis] + \
+                    vertices[valid_pixel_3d_faces[:, 1], :] * valid_pixel_b_coords[:, 1][:, np.newaxis] + \
+                    vertices[valid_pixel_3d_faces[:, 2], :] * valid_pixel_b_coords[:, 2][:, np.newaxis]
+    vertex_normals = normals
+    pixel_3d_normals = vertex_normals[valid_pixel_3d_faces[:, 0], :] * valid_pixel_b_coords[:, 0][:, np.newaxis] + \
+                    vertex_normals[valid_pixel_3d_faces[:, 1], :] * valid_pixel_b_coords[:, 1][:, np.newaxis] + \
+                    vertex_normals[valid_pixel_3d_faces[:, 2], :] * valid_pixel_b_coords[:, 2][:, np.newaxis]
+    pixel_3d_normals = pixel_3d_normals / np.linalg.norm(pixel_3d_normals, axis=-1)[:, np.newaxis]
+    displacements = displacement_map[y_coords[valid_pixel_ids].astype(int), x_coords[valid_pixel_ids].astype(int)]
+    dense_colors = texture_map[y_coords[valid_pixel_ids].astype(int), x_coords[valid_pixel_ids].astype(int)]
+    offsets = np.einsum('i,ij->ij', displacements, pixel_3d_normals)
+    dense_vertices = pixel_3d_points + offsets
+    return dense_vertices, dense_colors, dense_faces
+
 # borrowed from https://github.com/YadiraF/PRNet/blob/master/utils/write.py
-def write_obj(obj_name, vertices, faces, colors=None, texture=None, uvcoords=None, uvfaces=None):
+def write_obj(obj_name,
+              vertices,
+              faces,
+              colors=None,
+              texture=None,
+              uvcoords=None,
+              uvfaces=None,
+              inverse_face_order=False,
+              normal_map=None,
+              ):
     ''' Save 3D face model with texture. 
     Ref: https://github.com/patrikhuber/eos/blob/bd00155ebae4b1a13b08bf5a991694d682abbada/include/eos/core/Mesh.hpp
     Args:
@@ -28,8 +71,13 @@ def write_obj(obj_name, vertices, faces, colors=None, texture=None, uvcoords=Non
     material_name = 'FaceTexture'
 
     faces = faces.copy()
-    faces += 1 # mesh lab start with 1
-    
+    # mesh lab start with 1, python/c++ start from 0
+    faces += 1
+    if inverse_face_order:
+        faces = faces[:, [2, 1, 0]]
+        if uvfaces is not None:
+            uvfaces = uvfaces[:, [2, 1, 0]]
+
     # write obj
     with open(obj_name, 'w') as f:
         # first line: write mtlib(material library)
@@ -46,7 +94,7 @@ def write_obj(obj_name, vertices, faces, colors=None, texture=None, uvcoords=Non
         else:
             for i in range(vertices.shape[0]):
                 f.write('v {} {} {} {} {} {}\n'.format(vertices[i, 0], vertices[i, 1], vertices[i, 2], colors[i, 0], colors[i, 1], colors[i, 2]))
-        
+
         # write uv coords
         if texture is None:
             for i in range(faces.shape[0]):
@@ -58,25 +106,46 @@ def write_obj(obj_name, vertices, faces, colors=None, texture=None, uvcoords=Non
             # write f: ver ind/ uv ind
             uvfaces = uvfaces + 1
             for i in range(faces.shape[0]):
-                f.write('f {}/{} {}/{} {}/{}\n'.format(faces[i,2], uvfaces[i,2], faces[i,1], uvfaces[i,1], faces[i,0], uvfaces[i,0]))
+                f.write('f {}/{} {}/{} {}/{}\n'.format(
+                    #  faces[i, 2], uvfaces[i, 2],
+                    #  faces[i, 1], uvfaces[i, 1],
+                    #  faces[i, 0], uvfaces[i, 0]
+                    faces[i, 0], uvfaces[i, 0],
+                    faces[i, 1], uvfaces[i, 1],
+                    faces[i, 2], uvfaces[i, 2]
+                )
+                )
             # write mtl
             with open(mtl_name, 'w') as f:
                 f.write('newmtl %s\n' % material_name)
                 s = 'map_Kd {}\n'.format(os.path.basename(texture_name)) # map to image
                 f.write(s)
+
+                if normal_map is not None:
+                    name, _ = os.path.splitext(obj_name)
+                    normal_name = f'{name}_normals.png'
+                    f.write(f'disp {normal_name}')
+                    # out_normal_map = normal_map / (np.linalg.norm(
+                    #     normal_map, axis=-1, keepdims=True) + 1e-9)
+                    # out_normal_map = (out_normal_map + 1) * 0.5
+
+                    cv2.imwrite(
+                        normal_name,
+                        # (out_normal_map * 255).astype(np.uint8)[:, :, ::-1]
+                        normal_map
+                    )
             cv2.imwrite(texture_name, texture)
-    
+
 # ---------------------------- process/generate vertices, normals, faces
-def generate_triangles(h, w, mask = None):
+def generate_triangles(h, w, margin_x=2, margin_y=5, mask = None):
     # quad layout:
     # 0 1 ... w-1
     # w w+1
     #.
     # w*h
     triangles = []
-    margin=0
-    for x in range(margin, w-1-margin):
-        for y in range(margin, h-1-margin):
+    for x in range(margin_x, w-1-margin_x):
+        for y in range(margin_y, h-1-margin_y):
             triangle0 = [y*w + x, y*w + x + 1, (y+1)*w + x]
             triangle1 = [y*w + x + 1, (y+1)*w + x + 1, (y+1)*w + x]
             triangles.append(triangle0)

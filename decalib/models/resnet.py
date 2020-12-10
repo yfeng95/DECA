@@ -167,7 +167,7 @@ def copy_parameter_from_resnet(model, resnet_dict):
         except:
             print(name, ' is inconsistent!')
             continue
-    print('copy resnet state dict finished!')
+    # print('copy resnet state dict finished!')
     # import ipdb; ipdb.set_trace()
 
 def load_ResNet50Model():

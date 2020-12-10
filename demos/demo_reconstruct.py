@@ -79,7 +79,8 @@ if __name__ == '__main__':
     parser.add_argument('--saveDepth', default=False, type=lambda x: x.lower() in ['true', '1'],
                         help='whether to save depth image' )
     parser.add_argument('--saveObj', default=False, type=lambda x: x.lower() in ['true', '1'],
-                        help='whether to save outputs as .obj' )
+                        help='whether to save outputs as .obj, detail mesh will end with _detail.obj. \
+                            Note that saving objs could be slow' )
     parser.add_argument('--saveMat', default=False, type=lambda x: x.lower() in ['true', '1'],
                         help='whether to save outputs as .mat' )
     parser.add_argument('--saveImages', default=False, type=lambda x: x.lower() in ['true', '1'],

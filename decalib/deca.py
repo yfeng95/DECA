@@ -1,3 +1,18 @@
+# -*- coding: utf-8 -*-
+#
+# Max-Planck-Gesellschaft zur Förderung der Wissenschaften e.V. (MPG) is
+# holder of all proprietary rights on this computer program.
+# Using this computer program means that you agree to the terms 
+# in the LICENSE file included with this software distribution. 
+# Any use not explicitly granted by the LICENSE is prohibited.
+#
+# Copyright©2019 Max-Planck-Gesellschaft zur Förderung
+# der Wissenschaften e.V. (MPG). acting on behalf of its Max Planck Institute
+# for Intelligent Systems. All rights reserved.
+#
+# For comments or questions, please email us at deca@tue.mpg.de
+# For commercial licensing contact, please contact ps-license@tuebingen.mpg.de
+
 import os, sys
 import torch
 import torchvision
@@ -42,7 +57,12 @@ class DECA(object):
         # displacement correction
         fixed_dis = np.load(model_cfg.fixed_displacement_path)
         self.fixed_uv_dis = torch.tensor(fixed_dis).float().to(self.device)
-        
+        # mean texture
+        mean_texture = imread(model_cfg.mean_tex_path).astype(np.float32)/255.; mean_texture = torch.from_numpy(mean_texture.transpose(2,0,1))[None,:,:,:].contiguous()
+        self.mean_texture = F.interpolate(mean_texture, [model_cfg.uv_size, model_cfg.uv_size]).to(self.device)
+        # dense mesh template, for save detail mesh
+        self.dense_template = np.load(model_cfg.dense_template_path, allow_pickle=True, encoding='latin1').item()
+
     def _create_model(self, model_cfg):
         # set up parameters
         self.n_param = model_cfg.n_shape+model_cfg.n_tex+model_cfg.n_exp+model_cfg.n_pose+model_cfg.n_cam+model_cfg.n_light
@@ -104,6 +124,21 @@ class DECA(object):
         uv_detail_normals = uv_detail_normals.reshape([batch_size, uv_coarse_vertices.shape[2], uv_coarse_vertices.shape[3], 3]).permute(0,3,1,2)
         return uv_detail_normals
 
+    def displacement2vertex(self, uv_z, coarse_verts, coarse_normals):
+        ''' Convert displacement map into detail vertices
+        '''
+        batch_size = uv_z.shape[0]
+        uv_coarse_vertices = self.render.world2uv(coarse_verts).detach()
+        uv_coarse_normals = self.render.world2uv(coarse_normals).detach()
+    
+        uv_z = uv_z*self.uv_face_eye_mask
+        uv_detail_vertices = uv_coarse_vertices + uv_z*uv_coarse_normals + self.fixed_uv_dis[None,None,:,:]*uv_coarse_normals.detach()
+        dense_vertices = uv_detail_vertices.permute(0,2,3,1).reshape([batch_size, -1, 3])
+        # uv_detail_normals = util.vertex_normals(dense_vertices, self.render.dense_faces.expand(batch_size, -1, -1))
+        # uv_detail_normals = uv_detail_normals.reshape([batch_size, uv_coarse_vertices.shape[2], uv_coarse_vertices.shape[3], 3]).permute(0,3,1,2)
+        detail_faces =  self.render.dense_faces
+        return dense_vertices, detail_faces
+
     def visofp(self, normals):
         ''' visibility of keypoints, based on the normal direction
         '''
@@ -156,16 +191,22 @@ class DECA(object):
         ## TODO: current resolution 256x256, support higher resolution, and add visibility
         uv_pverts = self.render.world2uv(trans_verts)
         uv_gt = F.grid_sample(images, uv_pverts.permute(0,2,3,1)[:,:,:,:2], mode='bilinear')
-        uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask
+        if self.cfg.model.use_tex:
+            ## TODO: poisson blending should give better-looking results
+            uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (uv_texture[:,:3,:,:]*(1-self.uv_face_eye_mask)*0.7)
+        else:
+            uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (torch.ones_like(uv_gt[:,:3,:,:])*(1-self.uv_face_eye_mask)*0.7)
             
         ## output
         opdict = {
             'vertices': verts,
+            'normals': ops['normals'],
             'transformed_vertices': trans_verts,
             'landmarks2d': landmarks2d,
             'landmarks3d': landmarks3d,
             'uv_detail_normals': uv_detail_normals,
-            'uv_texture_gt': uv_texture_gt
+            'uv_texture_gt': uv_texture_gt,
+            'displacement_map': uv_z+self.fixed_uv_dis[None,None,:,:],
         }
         if self.cfg.model.use_tex:
             opdict['albedo'] = albedo
@@ -200,8 +241,24 @@ class DECA(object):
         '''
         i = 0
         vertices = opdict['vertices'][i].cpu().numpy()
-        faces = self.render.faces[0].cpu().numpy()[:,[0,2,1]]
+        faces = self.render.faces[0].cpu().numpy()
         texture = util.tensor2image(opdict['uv_texture_gt'][i])
         uvcoords = self.render.raw_uvcoords[0].cpu().numpy()
-        uvfaces = self.render.uvfaces[0].cpu().numpy()[:,[0,2,1]]
-        util.write_obj(filename, vertices, faces, texture=texture, uvcoords=uvcoords, uvfaces=uvfaces)
+        uvfaces = self.render.uvfaces[0].cpu().numpy()
+        # save coarse mesh, with texture and normal map
+        normal_map = util.tensor2image(opdict['uv_detail_normals'][i]*0.5 + 0.5)
+        util.write_obj(filename, vertices, faces, 
+                        texture=texture, 
+                        uvcoords=uvcoords, 
+                        uvfaces=uvfaces, 
+                        normal_map=normal_map)
+        # upsample mesh, save detailed mesh
+        texture = texture[:,:,[2,1,0]]
+        normals = opdict['normals'][i].cpu().numpy()
+        displacement_map = opdict['displacement_map'][i].cpu().numpy().squeeze()
+        dense_vertices, dense_colors, dense_faces = util.upsample_mesh(vertices, normals, faces, displacement_map, texture, self.dense_template)
+        util.write_obj(filename.replace('.obj', '_detail.obj'), 
+                        dense_vertices, 
+                        dense_faces,
+                        colors = dense_colors,
+                        inverse_face_order=True)

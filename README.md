@@ -50,7 +50,10 @@ Clone the repo:
     ```   
     to visualize the predicted 2D landmanks, 3D landmarks (red means non-visible points), coarse geometry, detailed geoemtry, and depth.   
     <p align="center">   
-    <img src="TestSamples/examples/results/image03786_vis.jpg">
+    <img src="TestSamples/examples/results/id04657-PPHljWCZ53c-000565_inputs_inputs_vis.jpg">
+    </p>  
+    <p align="center">   
+    <img src="TestSamples/examples/results/IMG_0392_inputs_vis.jpg">
     </p>  
     You can also generate an obj file (which can be opened with Meshlab) that includes extracted texture from the input image.  
 
@@ -60,6 +63,13 @@ Clone the repo:
     ```bash
     python demos/demo_transfer.py
     ```   
+    Given an image, you can reconstruct its 3D face, then animate it by tranfering expressions from other images. 
+    Using Meshlab to open the detailed mesh obj file, you can see something like that:
+    <p align="center"> 
+    <img src="Doc/images/soubhik.gif">
+    </p>  
+    Note that, you need to set '--useTex True' to get full texture.   
+
     c. for the [teaser gif](https://github.com/YadiraF/DECA/results/teaser.gif) (**reposing** and **animation**)
     ```bash
     python demos/demo_teaser.py 
@@ -102,9 +112,10 @@ Here are some great resources we benefit:
 [kornia](https://github.com/kornia/kornia) for image/rotation processing  
 [face-alignment](https://github.com/1adrianb/face-alignment) for cropping  
 
-We would also like to thank other recent public 3D face reconstruction works that allow us to easily perform quantitative and qualitative comparisons :)  
-[Deep3DFaceReconstruction](https://github.com/microsoft/Deep3DFaceReconstruction/blob/master/renderer/rasterize_triangles.py), 
+We would also like to thank other recent public 3D face reconstruction works  
+that allow us to easily perform quantitative and qualitative comparisons :)  
 [RingNet](https://github.com/soubhiksanyal/RingNet), 
+[Deep3DFaceReconstruction](https://github.com/microsoft/Deep3DFaceReconstruction/blob/master/renderer/rasterize_triangles.py), 
 [Nonlinear_Face_3DMM](https://github.com/tranluan/Nonlinear_Face_3DMM),
 [3DDFA-v2](https://github.com/cleardusk/3DDFA_V2),
 [extreme_3d_faces](https://github.com/anhttran/extreme_3d_faces),

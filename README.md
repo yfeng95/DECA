@@ -68,6 +68,8 @@ Clone the repo:
     <p align="center"> 
     <img src="Doc/images/soubhik.gif">
     </p>  
+    (Thank Soubhik for allowing me to use his face ^_^)   
+    
     Note that, you need to set '--useTex True' to get full texture.   
 
     c. for the [teaser gif](https://github.com/YadiraF/DECA/results/teaser.gif) (**reposing** and **animation**)

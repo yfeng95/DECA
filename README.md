@@ -91,12 +91,14 @@ For more details of the evaluation, please check our [arXiv paper](https://arxiv
 ## Citation
 If you find our work useful to your research, please consider citing:
 ```
-@inproceedings{deca2020,
+@inproceedings{DECA:Siggraph2021,
   title={Learning an Animatable Detailed {3D} Face Model from In-The-Wild Images},
   author={Feng, Yao and Feng, Haiwen and Black, Michael J. and Bolkart, Timo},
-  booktitle = {arxiv},
-  month = {Dec},
-  year = {2020}
+  journal = {ACM Transactions on Graphics, (Proc. SIGGRAPH)}, 
+  volume = {40}, 
+  number = {8}, 
+  year = {2021}, 
+  url = {https://doi.org/10.1145/3450626.3459936} 
 }
 ```
 

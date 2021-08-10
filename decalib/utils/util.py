@@ -22,6 +22,7 @@ import os
 from scipy.ndimage import morphology
 from skimage.io import imsave
 import cv2
+import torchvision
 
 def upsample_mesh(vertices, normals, faces, displacement_map, texture_map, dense_template):
     ''' upsampling coarse mesh (with displacment map)
@@ -599,3 +600,48 @@ def tensor_vis_landmarks(images, landmarks, gt_landmarks=None, color = 'g', isSc
     vis_landmarks = np.stack(vis_landmarks)
     vis_landmarks = torch.from_numpy(vis_landmarks[:,:,:,[2,1,0]].transpose(0,3,1,2))/255.#, dtype=torch.float32)
     return vis_landmarks
+
+
+############### for training
+def load_local_mask(image_size=256, mode='bbx'):
+    if mode == 'bbx':
+        # UV space face attributes bbx in size 2048 (l r t b)
+        # face = np.array([512, 1536, 512, 1536]) #
+        face = np.array([400, 1648, 400, 1648])
+        # if image_size == 512:
+            # face = np.array([400, 400+512*2, 400, 400+512*2])
+            # face = np.array([512, 512+512*2, 512, 512+512*2])
+
+        forehead = np.array([550, 1498, 430, 700+50])
+        eye_nose = np.array([490, 1558, 700, 1050+50])
+        mouth = np.array([574, 1474, 1050, 1550])
+        ratio = image_size / 2048.
+        face = (face * ratio).astype(np.int)
+        forehead = (forehead * ratio).astype(np.int)
+        eye_nose = (eye_nose * ratio).astype(np.int)
+        mouth = (mouth * ratio).astype(np.int)
+        regional_mask = np.array([face, forehead, eye_nose, mouth])
+
+    return regional_mask
+
+def visualize_grid(visdict, savepath=None, size=224, dim=1, return_gird=True):
+    '''
+    image range should be [0,1]
+    dim: 2 for horizontal. 1 for vertical
+    '''
+    assert dim == 1 or dim==2
+    grids = {}
+    for key in visdict:
+        _,_,h,w = visdict[key].shape
+        if dim == 2:
+            new_h = size; new_w = int(w*size/h)
+        elif dim == 1:
+            new_h = int(h*size/w); new_w = size
+        grids[key] = torchvision.utils.make_grid(F.interpolate(visdict[key], [new_h, new_w]).detach().cpu())
+    grid = torch.cat(list(grids.values()), dim)
+    grid_image = (grid.numpy().transpose(1,2,0).copy()*255)[:,:,[2,1,0]]
+    grid_image = np.minimum(np.maximum(grid_image, 0), 255).astype(np.uint8)
+    if savepath:
+        cv2.imwrite(savepath, grid_image)
+    if return_gird:
+        return grid_image

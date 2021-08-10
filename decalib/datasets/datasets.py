@@ -29,7 +29,7 @@ from . import detectors
 
 def video2sequence(video_path):
     videofolder = video_path.split('.')[0]
-    util.check_mkdir(videofolder)
+    os.makedirs(videofolder, exist_ok=True)
     video_name = video_path.split('/')[-1].split('.')[0]
     vidcap = cv2.VideoCapture(video_path)
     success,image = vidcap.read()
@@ -45,7 +45,7 @@ def video2sequence(video_path):
     return imagepath_list
 
 class TestData(Dataset):
-    def __init__(self, testpath, iscrop=True, crop_size=224, scale=1.25, face_detector='mtcnn'):
+    def __init__(self, testpath, iscrop=True, crop_size=224, scale=1.25, face_detector='fan'):
         '''
             testpath: folder, imagepath_list, image path, video path
         '''
@@ -60,7 +60,7 @@ class TestData(Dataset):
         else:
             print(f'please check the test path: {testpath}')
             exit()
-        print('total {} images'.format(len(self.imagepath_list)))
+        # print('total {} images'.format(len(self.imagepath_list)))
         self.imagepath_list = sorted(self.imagepath_list)
         self.crop_size = crop_size
         self.scale = scale
@@ -111,7 +111,7 @@ class TestData(Dataset):
                 top = np.min(kpt[:,1]); bottom = np.max(kpt[:,1])
                 old_size, center = self.bbox2point(left, right, top, bottom, type='kpt68')
             elif os.path.exists(kpt_txtpath):
-                kpt = np.loadtxt(kptpath)
+                kpt = np.loadtxt(kpt_txtpath)
                 left = np.min(kpt[:,0]); right = np.max(kpt[:,0]); 
                 top = np.min(kpt[:,1]); bottom = np.max(kpt[:,1])
                 old_size, center = self.bbox2point(left, right, top, bottom, type='kpt68')

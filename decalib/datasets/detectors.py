@@ -28,7 +28,7 @@ class FAN(object):
         '''
         out = self.model.get_landmarks(image)
         if out is None:
-            return [0]
+            return [0], 'kpt68'
         else:
             kpt = out[0].squeeze()
             left = np.min(kpt[:,0]); right = np.max(kpt[:,0]); 

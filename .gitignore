@@ -25,12 +25,13 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
+.vscode
 
 # 3D data #
 ############
 *.mat
 *.pkl
-# *.obj
+*.obj
 *.dat
 *.npz
 
@@ -39,3 +40,10 @@ Thumbs.db
 *.pyc
 __pycache__
 
+## deca data
+results
+# *_vis.jpg
+
+## internal use
+cluster_scripts
+internal

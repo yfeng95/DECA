@@ -34,8 +34,9 @@ from .datasets import datasets
 from .utils.config import cfg
 torch.backends.cudnn.benchmark = True
 
-class DECA(object):
+class DECA(nn.Module):
     def __init__(self, config=None, device='cuda'):
+        super(DECA, self).__init__()
         if config is None:
             self.cfg = cfg
         else:
@@ -90,7 +91,7 @@ class DECA(object):
             util.copy_state_dict(self.D_detail.state_dict(), checkpoint['D_detail'])
         else:
             print(f'please check model path: {model_path}')
-            exit()
+            # exit()
         # eval mode
         self.E_flame.eval()
         self.E_detail.eval()
@@ -124,21 +125,6 @@ class DECA(object):
         uv_detail_normals = uv_detail_normals.reshape([batch_size, uv_coarse_vertices.shape[2], uv_coarse_vertices.shape[3], 3]).permute(0,3,1,2)
         return uv_detail_normals
 
-    def displacement2vertex(self, uv_z, coarse_verts, coarse_normals):
-        ''' Convert displacement map into detail vertices
-        '''
-        batch_size = uv_z.shape[0]
-        uv_coarse_vertices = self.render.world2uv(coarse_verts).detach()
-        uv_coarse_normals = self.render.world2uv(coarse_normals).detach()
-    
-        uv_z = uv_z*self.uv_face_eye_mask
-        uv_detail_vertices = uv_coarse_vertices + uv_z*uv_coarse_normals + self.fixed_uv_dis[None,None,:,:]*uv_coarse_normals.detach()
-        dense_vertices = uv_detail_vertices.permute(0,2,3,1).reshape([batch_size, -1, 3])
-        # uv_detail_normals = util.vertex_normals(dense_vertices, self.render.dense_faces.expand(batch_size, -1, -1))
-        # uv_detail_normals = uv_detail_normals.reshape([batch_size, uv_coarse_vertices.shape[2], uv_coarse_vertices.shape[3], 3]).permute(0,3,1,2)
-        detail_faces =  self.render.dense_faces
-        return dense_vertices, detail_faces
-
     def visofp(self, normals):
         ''' visibility of keypoints, based on the normal direction
         '''
@@ -146,82 +132,110 @@ class DECA(object):
         vis68 = (normals68[:,:,2:] < 0.1).float()
         return vis68
 
-    @torch.no_grad()
-    def encode(self, images):
-        batch_size = images.shape[0]
-        parameters = self.E_flame(images)
-        detailcode = self.E_detail(images)
+    # @torch.no_grad()
+    def encode(self, images, use_detail=True):
+        if use_detail:
+            # use_detail is for training detail model, need to set coarse model as eval mode
+            with torch.no_grad():
+                parameters = self.E_flame(images)
+        else:
+            parameters = self.E_flame(images)
         codedict = self.decompose_code(parameters, self.param_dict)
-        codedict['detail'] = detailcode
         codedict['images'] = images
+        if use_detail:
+            detailcode = self.E_detail(images)
+            codedict['detail'] = detailcode
+        if self.cfg.model.jaw_type == 'euler':
+            posecode = codedict['pose']
+            euler_jaw_pose = posecode[:,3:].clone() # x for yaw (open mouth), y for pitch (left ang right), z for roll
+            posecode[:,3:] = batch_euler2axis(euler_jaw_pose)
+            codedict['pose'] = posecode
+            codedict['euler_jaw_pose'] = euler_jaw_pose  
         return codedict
 
-    @torch.no_grad()
-    def decode(self, codedict):
+    # @torch.no_grad()
+    def decode(self, codedict, rendering=True, iddict=None, vis_lmk=True, return_vis=True, use_detail=True):
         images = codedict['images']
         batch_size = images.shape[0]
         
         ## decode
         verts, landmarks2d, landmarks3d = self.flame(shape_params=codedict['shape'], expression_params=codedict['exp'], pose_params=codedict['pose'])
-        uv_z = self.D_detail(torch.cat([codedict['pose'][:,3:], codedict['exp'], codedict['detail']], dim=1))
         if self.cfg.model.use_tex:
             albedo = self.flametex(codedict['tex'])
         else:
             albedo = torch.zeros([batch_size, 3, self.uv_size, self.uv_size], device=images.device) 
+        landmarks3d_world = landmarks3d.clone()
+
         ## projection
-        landmarks2d = util.batch_orth_proj(landmarks2d, codedict['cam'])[:,:,:2]; landmarks2d[:,:,1:] = -landmarks2d[:,:,1:]; landmarks2d = landmarks2d*self.image_size/2 + self.image_size/2
-        landmarks3d = util.batch_orth_proj(landmarks3d, codedict['cam']); landmarks3d[:,:,1:] = -landmarks3d[:,:,1:]; landmarks3d = landmarks3d*self.image_size/2 + self.image_size/2
+        landmarks2d = util.batch_orth_proj(landmarks2d, codedict['cam'])[:,:,:2]; landmarks2d[:,:,1:] = -landmarks2d[:,:,1:] #; landmarks2d = landmarks2d*self.image_size/2 + self.image_size/2
+        landmarks3d = util.batch_orth_proj(landmarks3d, codedict['cam']); landmarks3d[:,:,1:] = -landmarks3d[:,:,1:] #; landmarks3d = landmarks3d*self.image_size/2 + self.image_size/2
         trans_verts = util.batch_orth_proj(verts, codedict['cam']); trans_verts[:,:,1:] = -trans_verts[:,:,1:]
-        
-        ## rendering
-        ops = self.render(verts, trans_verts, albedo, codedict['light'])
-        uv_detail_normals = self.displacement2normal(uv_z, verts, ops['normals'])
-        uv_shading = self.render.add_SHlight(uv_detail_normals, codedict['light'])
-        uv_texture = albedo*uv_shading
-
-        landmarks3d_vis = self.visofp(ops['transformed_normals'])
-        landmarks3d = torch.cat([landmarks3d, landmarks3d_vis], dim=2)
-
-        ## render shape
-        shape_images = self.render.render_shape(verts, trans_verts)
-        detail_normal_images = F.grid_sample(uv_detail_normals, ops['grid'], align_corners=False)*ops['alpha_images']
-        shape_detail_images = self.render.render_shape(verts, trans_verts, detail_normal_images=detail_normal_images)
-        
-        ## extract texture
-        ## TODO: current resolution 256x256, support higher resolution, and add visibility
-        uv_pverts = self.render.world2uv(trans_verts)
-        uv_gt = F.grid_sample(images, uv_pverts.permute(0,2,3,1)[:,:,:,:2], mode='bilinear')
-        if self.cfg.model.use_tex:
-            ## TODO: poisson blending should give better-looking results
-            uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (uv_texture[:,:3,:,:]*(1-self.uv_face_eye_mask)*0.7)
-        else:
-            uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (torch.ones_like(uv_gt[:,:3,:,:])*(1-self.uv_face_eye_mask)*0.7)
-            
-        ## output
         opdict = {
-            'vertices': verts,
-            'normals': ops['normals'],
-            'transformed_vertices': trans_verts,
+            'verts': verts,
+            'trans_verts': trans_verts,
             'landmarks2d': landmarks2d,
             'landmarks3d': landmarks3d,
-            'uv_detail_normals': uv_detail_normals,
-            'uv_texture_gt': uv_texture_gt,
-            'displacement_map': uv_z+self.fixed_uv_dis[None,None,:,:],
+            'landmarks3d_world': landmarks3d_world,
         }
+        ## rendering
+        if rendering:
+            ops = self.render(verts, trans_verts, albedo, codedict['light'])
+            ## output
+            opdict['grid'] = ops['grid']
+            opdict['rendered_images'] = ops['images']
+            opdict['alpha_images'] = ops['alpha_images']
+            opdict['normal_images'] = ops['normal_images']
+        
         if self.cfg.model.use_tex:
             opdict['albedo'] = albedo
-            opdict['uv_texture'] = uv_texture
+            
+        if use_detail:
+            uv_z = self.D_detail(torch.cat([codedict['pose'][:,3:], codedict['exp'], codedict['detail']], dim=1))
+            if iddict is not None:
+                uv_z = self.D_detail(torch.cat([iddict['pose'][:,3:], iddict['exp'], codedict['detail']], dim=1))
+            uv_detail_normals = self.displacement2normal(uv_z, verts, ops['normals'])
+            uv_shading = self.render.add_SHlight(uv_detail_normals, codedict['light'])
+            uv_texture = albedo*uv_shading
 
-        visdict = {
-            'inputs': images, 
-            'landmarks2d': util.tensor_vis_landmarks(images, landmarks2d, isScale=False),
-            'landmarks3d': util.tensor_vis_landmarks(images, landmarks3d, isScale=False),
-            'shape_images': shape_images,
-            'shape_detail_images': shape_detail_images
-        }
-        if self.cfg.model.use_tex:
-            visdict['rendered_images'] = ops['images']
-        return opdict, visdict
+            opdict['uv_texture'] = uv_texture 
+            opdict['normals'] = ops['normals']
+            opdict['uv_detail_normals'] = uv_detail_normals
+            opdict['displacement_map'] = uv_z+self.fixed_uv_dis[None,None,:,:]
+        
+        if vis_lmk:
+            landmarks3d_vis = self.visofp(ops['transformed_normals'])
+            landmarks3d = torch.cat([landmarks3d, landmarks3d_vis], dim=2)
+            opdict['landmarks3d'] = landmarks3d
+
+        if return_vis:
+            ## render shape
+            shape_images = self.render.render_shape(verts, trans_verts)
+            detail_normal_images = F.grid_sample(uv_detail_normals, ops['grid'], align_corners=False)*ops['alpha_images']
+            shape_detail_images = self.render.render_shape(verts, trans_verts, detail_normal_images=detail_normal_images)
+            ## extract texture
+            ## TODO: current resolution 256x256, support higher resolution, and add visibility
+            uv_pverts = self.render.world2uv(trans_verts)
+            uv_gt = F.grid_sample(images, uv_pverts.permute(0,2,3,1)[:,:,:,:2], mode='bilinear')
+            if self.cfg.model.use_tex:
+                ## TODO: poisson blending should give better-looking results
+                uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (uv_texture[:,:3,:,:]*(1-self.uv_face_eye_mask))
+            else:
+                uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (torch.ones_like(uv_gt[:,:3,:,:])*(1-self.uv_face_eye_mask)*0.7)
+            
+            opdict['uv_texture_gt'] = uv_texture_gt
+            visdict = {
+                'inputs': images, 
+                'landmarks2d': util.tensor_vis_landmarks(images, landmarks2d),
+                'landmarks3d': util.tensor_vis_landmarks(images, landmarks3d),
+                'shape_images': shape_images,
+                'shape_detail_images': shape_detail_images
+            }
+            if self.cfg.model.use_tex:
+                visdict['rendered_images'] = ops['images']
+            return opdict, visdict
+
+        else:
+            return opdict
 
     def visualize(self, visdict, size=None):
         grids = {}
@@ -240,7 +254,7 @@ class DECA(object):
         texture: [3, h, w], tensor
         '''
         i = 0
-        vertices = opdict['vertices'][i].cpu().numpy()
+        vertices = opdict['verts'][i].cpu().numpy()
         faces = self.render.faces[0].cpu().numpy()
         texture = util.tensor2image(opdict['uv_texture_gt'][i])
         uvcoords = self.render.raw_uvcoords[0].cpu().numpy()
@@ -260,5 +274,21 @@ class DECA(object):
         util.write_obj(filename.replace('.obj', '_detail.obj'), 
                         dense_vertices, 
                         dense_faces,
-                        colors = dense_colors,
+                        # colors = dense_colors,
                         inverse_face_order=True)
+    
+    def run(self, imagepath, iscrop=True):
+        ''' An api for running deca given an image path
+        '''
+        testdata = datasets.TestData(imagepath)
+        images = testdata[0]['image'].to(self.device)[None,...]
+        codedict = self.encode(images)
+        opdict, visdict = self.decode(codedict)
+        return codedict, opdict, visdict
+
+    def model_dict(self):
+        return {
+            'E_flame': self.E_flame.state_dict(),
+            'E_detail': self.E_detail.state_dict(),
+            'D_detail': self.D_detail.state_dict()
+        }

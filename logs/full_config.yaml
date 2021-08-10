@@ -1,0 +1,120 @@
+!!python/object/new:yacs.config.CfgNode
+dictitems:
+  cfg_file: configs/deca_pretrain.yml
+  dataset: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      K: 1
+      batch_size: 64
+      eval_data:
+      - aflw2000
+      image_size: 224
+      isSingle: false
+      num_workers: 2
+      scale_max: 1.8
+      scale_min: 1.4
+      test_data:
+      - ''
+      training_data:
+      - vggface2
+      - ethnicity
+      trans_scale: 0.0
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  deca_dir: /ps/scratch/yfeng/github/DECA_training
+  device: cuda:0
+  device_id: '0'
+  loss: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      detail_consistency: true
+      eyed: 0.5
+      id: 0.0
+      id_shape_only: true
+      lipd: 0.5
+      lmk: 1.0
+      mrf: 0.01
+      photo: 0.0
+      photo_D: 5.0
+      reg_diff: 0.005
+      reg_exp: 0.0001
+      reg_jaw_pose: 1.0
+      reg_light: 1.0
+      reg_shape: 0.0001
+      reg_sym: 0.005
+      reg_tex: 1.0e-05
+      reg_z: 0.005
+      shape_consistency: false
+      useConstraint: true
+      useSeg: true
+      useWlmk: true
+      use_gender_prior: false
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  mode: train
+  model: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      dense_template_path: /ps/scratch/yfeng/github/DECA_training/data/texture_data_256.npy
+      face_eye_mask_path: /ps/scratch/yfeng/github/DECA_training/data/uv_face_eye_mask.png
+      face_mask_path: /ps/scratch/yfeng/github/DECA_training/data/uv_face_mask.png
+      fixed_displacement_path: /ps/scratch/yfeng/github/DECA_training/data/fixed_displacement_256.npy
+      flame_lmk_embedding_path: /ps/scratch/yfeng/github/DECA_training/data/landmark_embedding.npy
+      flame_model_path: /ps/scratch/yfeng/github/DECA_training/data/generic_model.pkl
+      jaw_type: aa
+      max_z: 0.01
+      mean_tex_path: /ps/scratch/yfeng/github/DECA_training/data/mean_texture.jpg
+      n_cam: 3
+      n_detail: 128
+      n_exp: 50
+      n_light: 27
+      n_pose: 6
+      n_shape: 100
+      n_tex: 50
+      param_list:
+      - shape
+      - tex
+      - exp
+      - pose
+      - cam
+      - light
+      tex_path: /ps/scratch/yfeng/github/DECA_training/data/FLAME_albedo_from_BFM.npz
+      tex_type: BFM
+      topology_path: /ps/scratch/yfeng/github/DECA_training/data/head_template.obj
+      use_tex: true
+      uv_size: 256
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+  output_dir: /ps/scratch/yfeng/Data/Projects-data/DECA-training/training/DECA_SIGGRAPH/pretrain
+  pretrained_modelpath: ''
+  train: !!python/object/new:yacs.config.CfgNode
+    dictitems:
+      checkpoint_steps: 500
+      eval_steps: 1000
+      log_dir: logs
+      log_steps: 50
+      lr: 0.0001
+      max_epochs: 2
+      max_steps: 100000
+      resume: true
+      val_steps: 500
+      val_vis_dir: val_images
+      vis_dir: train_images
+      vis_steps: 200
+      write_summary: true
+    state:
+      __deprecated_keys__: !!set {}
+      __immutable__: false
+      __new_allowed__: false
+      __renamed_keys__: {}
+state:
+  __deprecated_keys__: !!set {}
+  __immutable__: false
+  __new_allowed__: false
+  __renamed_keys__: {}

@@ -1,0 +1,32 @@
+# '''
+# first step:
+# pre-train the coarse model (i.e.𝐸𝑐) for two epochs with a batch size of 64,
+# with 𝜆𝑙𝑚𝑘=1𝑒−4, 𝜆𝑒𝑦𝑒=1.0, 𝜆𝜷=1𝑒−4, and 𝜆𝝍=1𝑒−4
+
+# Why:
+# training with only lmk loss for good initialization, 
+# because the use of photometric loss needs good initialization both in regression and optimization
+# and also, photometric loss needs differentiable rendering that makes the training slow
+# 
+# 
+# '''
+output_dir: "/ps/scratch/yfeng/Data/Projects-data/DECA-training/training/DECA_release_version/pretrain"
+dataset:
+  batch_size: 64
+  K: 1
+loss:
+  photo: 0.
+  id: 0.
+  useSeg: False
+  reg_tex: 0.
+  reg_light: 0.
+  shape_consistency: False
+train:
+  resume: True
+  max_epochs: 10
+  max_steps: 100000
+  log_steps: 10
+  vis_steps: 500
+  checkpoint_steps: 1000
+  val_steps: 500
+  eval_steps: 1000

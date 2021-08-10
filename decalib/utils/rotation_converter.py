@@ -1,29 +1,25 @@
-# -*- coding: utf-8 -*-
-#
-# Max-Planck-Gesellschaft zur Förderung der Wissenschaften e.V. (MPG) is
-# holder of all proprietary rights on this computer program.
-# Using this computer program means that you agree to the terms 
-# in the LICENSE file included with this software distribution. 
-# Any use not explicitly granted by the LICENSE is prohibited.
-#
-# Copyright©2019 Max-Planck-Gesellschaft zur Förderung
-# der Wissenschaften e.V. (MPG). acting on behalf of its Max Planck Institute
-# for Intelligent Systems. All rights reserved.
-#
-# For comments or questions, please email us at deca@tue.mpg.de
-# For commercial licensing contact, please contact ps-license@tuebingen.mpg.de
-
 import torch
 
 ''' Rotation Converter
-Representations: 
-    euler angle(3), angle axis(3), rotation matrix(3x3), quaternion(4), continous repre
-Ref: 
-    https://kornia.readthedocs.io/en/v0.1.2/_modules/torchgeometry/core/conversions.html#
-    smplx/lbs
-'''
+Repre: euler angle(3), angle axis(3), rotation matrix(3x3), quaternion(4)
+ref: https://kornia.readthedocs.io/en/v0.1.2/_modules/torchgeometry/core/conversions.html#
+"pi",
+"rad2deg",
+"deg2rad",
+# "angle_axis_to_rotation_matrix", batch_rodrigues
+"rotation_matrix_to_angle_axis",
+"rotation_matrix_to_quaternion",
+"quaternion_to_angle_axis",
+# "angle_axis_to_quaternion",
 
+euler2quat_conversion_sanity_batch
+
+ref: smplx/lbs
+batch_rodrigues: axis angle -> matrix
+# 
+'''
 pi = torch.Tensor([3.14159265358979323846])
+
 def rad2deg(tensor):
     """Function that converts angles from radians to degrees.
 

@@ -1,0 +1,469 @@
+2021-04-04 21:32:54.101 | INFO     | decalib.trainer:prepare_data:240 - ---- training data numbers: 
+2021-04-04 21:33:17.932 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 0/7868, Time: 2021-04-04-21:33:17 
+landmark: 0.0225, eye_distance: 0.0032, lip_distance: 0.0101, shape_reg: 0.0142, expression_reg: 0.0169, tex_reg: 0.0005, light_reg: 0.0001, all_loss: 0.0673, 
+2021-04-04 21:38:42.602 | INFO     | decalib.trainer:prepare_data:240 - ---- training data numbers: 
+2021-04-04 21:39:01.294 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 0/7868, Time: 2021-04-04-21:39:01 
+landmark: 0.3024, eye_distance: 0.0321, lip_distance: 0.0244, shape_reg: 0.0159, expression_reg: 0.0090, tex_reg: 0.0008, light_reg: 0.0454, all_loss: 0.4300, 
+2021-04-04 21:50:51.638 | INFO     | decalib.trainer:prepare_data:241 - ---- training data numbers: 
+2021-04-04 21:51:10.462 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 0/7868, Time: 2021-04-04-21:51:10 
+landmark: 0.2719, eye_distance: 0.0307, lip_distance: 0.0324, shape_reg: 0.0148, expression_reg: 0.0077, tex_reg: 0.0009, light_reg: 0.0274, all_loss: 0.3858, 
+2021-04-04 21:53:35.388 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 10/7868, Time: 2021-04-04-21:53:35 
+landmark: 0.2808, eye_distance: 0.0313, lip_distance: 0.0287, shape_reg: 0.0027, expression_reg: 0.0011, tex_reg: 0.0002, light_reg: 0.0063, all_loss: 0.3511, 
+2021-04-04 21:54:46.768 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 20/7868, Time: 2021-04-04-21:54:46 
+landmark: 0.2556, eye_distance: 0.0295, lip_distance: 0.0200, shape_reg: 0.0017, expression_reg: 0.0007, tex_reg: 0.0001, light_reg: 0.0023, all_loss: 0.3100, 
+2021-04-04 21:55:59.890 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 30/7868, Time: 2021-04-04-21:55:59 
+landmark: 0.2375, eye_distance: 0.0268, lip_distance: 0.0219, shape_reg: 0.0013, expression_reg: 0.0007, tex_reg: 0.0001, light_reg: 0.0012, all_loss: 0.2894, 
+2021-04-04 21:57:10.343 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 40/7868, Time: 2021-04-04-21:57:10 
+landmark: 0.2257, eye_distance: 0.0254, lip_distance: 0.0229, shape_reg: 0.0009, expression_reg: 0.0008, tex_reg: 0.0001, light_reg: 0.0006, all_loss: 0.2762, 
+2021-04-04 21:58:20.172 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 50/7868, Time: 2021-04-04-21:58:20 
+landmark: 0.2812, eye_distance: 0.0226, lip_distance: 0.0187, shape_reg: 0.0010, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0005, all_loss: 0.3247, 
+2021-04-04 21:59:29.968 | INFO     | decalib.trainer:fit:268 - Epoch: 0, Iter: 60/7868, Time: 2021-04-04-21:59:29 
+landmark: 0.2275, eye_distance: 0.0218, lip_distance: 0.0241, shape_reg: 0.0010, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0006, all_loss: 0.2757, 
+2021-04-04 22:00:29.224 | INFO     | decalib.trainer:prepare_data:241 - ---- training data numbers: 
+2021-04-04 22:01:14.455 | INFO     | decalib.trainer:prepare_data:241 - ---- training data numbers: 
+2021-04-04 22:06:00.780 | INFO     | decalib.trainer:prepare_data:241 - ---- training data numbers: 
+2021-04-04 22:06:16.030 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 0/7868, Time: 2021-04-04-22:06:16 
+landmark: 0.2961, eye_distance: 0.0299, lip_distance: 0.0283, shape_reg: 0.0153, expression_reg: 0.0105, tex_reg: 0.0008, light_reg: 0.0522, all_loss: 0.4331, 
+2021-04-04 22:08:09.826 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 10/7868, Time: 2021-04-04-22:08:09 
+landmark: 0.2678, eye_distance: 0.0321, lip_distance: 0.0212, shape_reg: 0.0020, expression_reg: 0.0011, tex_reg: 0.0002, light_reg: 0.0032, all_loss: 0.3275, 
+2021-04-04 22:13:54.738 | INFO     | decalib.trainer:prepare_data:241 - ---- training data numbers: 
+2021-04-04 22:14:10.184 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 0/7868, Time: 2021-04-04-22:14:10 
+landmark: 0.2619, eye_distance: 0.0304, lip_distance: 0.0211, shape_reg: 0.0168, expression_reg: 0.0069, tex_reg: 0.0012, light_reg: 0.0305, all_loss: 0.3689, 
+2021-04-04 22:20:46.786 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 50/7868, Time: 2021-04-04-22:20:46 
+landmark: 0.2481, eye_distance: 0.0279, lip_distance: 0.0288, shape_reg: 0.0006, expression_reg: 0.0003, tex_reg: 0.0000, light_reg: 0.0007, all_loss: 0.3064, 
+2021-04-04 22:26:00.713 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 100/7868, Time: 2021-04-04-22:26:00 
+landmark: 0.2099, eye_distance: 0.0171, lip_distance: 0.0251, shape_reg: 0.0009, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0005, all_loss: 0.2544, 
+2021-04-04 22:31:03.396 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 150/7868, Time: 2021-04-04-22:31:03 
+landmark: 0.2067, eye_distance: 0.0146, lip_distance: 0.0305, shape_reg: 0.0010, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0004, all_loss: 0.2542, 
+2021-04-04 22:36:01.744 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 200/7868, Time: 2021-04-04-22:36:01 
+landmark: 0.1846, eye_distance: 0.0125, lip_distance: 0.0249, shape_reg: 0.0009, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0003, all_loss: 0.2242, 
+2021-04-04 22:40:48.065 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 250/7868, Time: 2021-04-04-22:40:48 
+landmark: 0.1840, eye_distance: 0.0143, lip_distance: 0.0184, shape_reg: 0.0010, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0003, all_loss: 0.2189, 
+2021-04-04 22:45:34.300 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 300/7868, Time: 2021-04-04-22:45:34 
+landmark: 0.1670, eye_distance: 0.0091, lip_distance: 0.0202, shape_reg: 0.0012, expression_reg: 0.0011, tex_reg: 0.0000, light_reg: 0.0003, all_loss: 0.1990, 
+2021-04-04 22:50:04.162 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 350/7868, Time: 2021-04-04-22:50:04 
+landmark: 0.2017, eye_distance: 0.0085, lip_distance: 0.0289, shape_reg: 0.0011, expression_reg: 0.0011, tex_reg: 0.0000, light_reg: 0.0003, all_loss: 0.2416, 
+2021-04-04 22:54:36.735 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 400/7868, Time: 2021-04-04-22:54:36 
+landmark: 0.1642, eye_distance: 0.0085, lip_distance: 0.0382, shape_reg: 0.0010, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0003, all_loss: 0.2132, 
+2021-04-04 22:59:06.607 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 450/7868, Time: 2021-04-04-22:59:06 
+landmark: 0.1622, eye_distance: 0.0090, lip_distance: 0.0221, shape_reg: 0.0011, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1957, 
+2021-04-04 23:03:29.396 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 500/7868, Time: 2021-04-04-23:03:29 
+landmark: 0.1823, eye_distance: 0.0110, lip_distance: 0.0269, shape_reg: 0.0008, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.2220, 
+2021-04-04 23:07:45.609 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 550/7868, Time: 2021-04-04-23:07:45 
+landmark: 0.1502, eye_distance: 0.0081, lip_distance: 0.0244, shape_reg: 0.0014, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1853, 
+2021-04-04 23:11:56.251 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 600/7868, Time: 2021-04-04-23:11:56 
+landmark: 0.1495, eye_distance: 0.0074, lip_distance: 0.0232, shape_reg: 0.0009, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1821, 
+2021-04-04 23:16:08.077 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 650/7868, Time: 2021-04-04-23:16:08 
+landmark: 0.2039, eye_distance: 0.0075, lip_distance: 0.0230, shape_reg: 0.0011, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.2364, 
+2021-04-04 23:20:07.912 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 700/7868, Time: 2021-04-04-23:20:07 
+landmark: 0.1590, eye_distance: 0.0081, lip_distance: 0.0175, shape_reg: 0.0011, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1865, 
+2021-04-04 23:24:11.172 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 750/7868, Time: 2021-04-04-23:24:11 
+landmark: 0.1607, eye_distance: 0.0078, lip_distance: 0.0264, shape_reg: 0.0013, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1974, 
+2021-04-04 23:28:19.415 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 800/7868, Time: 2021-04-04-23:28:19 
+landmark: 0.1310, eye_distance: 0.0079, lip_distance: 0.0235, shape_reg: 0.0011, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1644, 
+2021-04-04 23:32:22.085 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 850/7868, Time: 2021-04-04-23:32:22 
+landmark: 0.1817, eye_distance: 0.0081, lip_distance: 0.0229, shape_reg: 0.0010, expression_reg: 0.0011, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.2150, 
+2021-04-04 23:36:28.996 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 900/7868, Time: 2021-04-04-23:36:28 
+landmark: 0.1568, eye_distance: 0.0087, lip_distance: 0.0190, shape_reg: 0.0011, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1865, 
+2021-04-04 23:40:32.508 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 950/7868, Time: 2021-04-04-23:40:32 
+landmark: 0.1862, eye_distance: 0.0071, lip_distance: 0.0224, shape_reg: 0.0009, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.2173, 
+2021-04-04 23:44:34.099 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1000/7868, Time: 2021-04-04-23:44:34 
+landmark: 0.1335, eye_distance: 0.0075, lip_distance: 0.0226, shape_reg: 0.0011, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1657, 
+2021-04-04 23:49:48.372 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1050/7868, Time: 2021-04-04-23:49:48 
+landmark: 0.1787, eye_distance: 0.0087, lip_distance: 0.0303, shape_reg: 0.0008, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.2192, 
+2021-04-04 23:53:46.107 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1100/7868, Time: 2021-04-04-23:53:46 
+landmark: 0.1264, eye_distance: 0.0062, lip_distance: 0.0199, shape_reg: 0.0012, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1546, 
+2021-04-04 23:57:37.990 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1150/7868, Time: 2021-04-04-23:57:37 
+landmark: 0.1427, eye_distance: 0.0075, lip_distance: 0.0179, shape_reg: 0.0008, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0002, all_loss: 0.1697, 
+2021-04-05 00:01:30.741 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1200/7868, Time: 2021-04-05-00:01:30 
+landmark: 0.1477, eye_distance: 0.0080, lip_distance: 0.0237, shape_reg: 0.0008, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1809, 
+2021-04-05 00:05:21.036 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1250/7868, Time: 2021-04-05-00:05:21 
+landmark: 0.1147, eye_distance: 0.0074, lip_distance: 0.0232, shape_reg: 0.0011, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1473, 
+2021-04-05 00:09:03.910 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1300/7868, Time: 2021-04-05-00:09:03 
+landmark: 0.1128, eye_distance: 0.0062, lip_distance: 0.0235, shape_reg: 0.0007, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1438, 
+2021-04-05 00:12:46.337 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1350/7868, Time: 2021-04-05-00:12:46 
+landmark: 0.1766, eye_distance: 0.0067, lip_distance: 0.0203, shape_reg: 0.0010, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.2053, 
+2021-04-05 00:16:25.452 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1400/7868, Time: 2021-04-05-00:16:25 
+landmark: 0.1302, eye_distance: 0.0074, lip_distance: 0.0231, shape_reg: 0.0009, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1623, 
+2021-04-05 00:20:04.421 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1450/7868, Time: 2021-04-05-00:20:04 
+landmark: 0.1302, eye_distance: 0.0059, lip_distance: 0.0147, shape_reg: 0.0010, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1525, 
+2021-04-05 00:23:41.973 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1500/7868, Time: 2021-04-05-00:23:41 
+landmark: 0.1108, eye_distance: 0.0072, lip_distance: 0.0240, shape_reg: 0.0007, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1433, 
+2021-04-05 00:27:15.376 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1550/7868, Time: 2021-04-05-00:27:14 
+landmark: 0.1459, eye_distance: 0.0069, lip_distance: 0.0305, shape_reg: 0.0008, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1848, 
+2021-04-05 00:30:46.124 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1600/7868, Time: 2021-04-05-00:30:46 
+landmark: 0.1341, eye_distance: 0.0071, lip_distance: 0.0327, shape_reg: 0.0007, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1751, 
+2021-04-05 00:34:20.447 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1650/7868, Time: 2021-04-05-00:34:20 
+landmark: 0.1251, eye_distance: 0.0058, lip_distance: 0.0209, shape_reg: 0.0008, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1532, 
+2021-04-05 00:37:48.402 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1700/7868, Time: 2021-04-05-00:37:48 
+landmark: 0.1670, eye_distance: 0.0068, lip_distance: 0.0249, shape_reg: 0.0009, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.2005, 
+2021-04-05 00:41:25.122 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1750/7868, Time: 2021-04-05-00:41:25 
+landmark: 0.1301, eye_distance: 0.0070, lip_distance: 0.0180, shape_reg: 0.0010, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1568, 
+2021-04-05 00:44:51.591 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1800/7868, Time: 2021-04-05-00:44:51 
+landmark: 0.1272, eye_distance: 0.0069, lip_distance: 0.0190, shape_reg: 0.0006, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1542, 
+2021-04-05 00:48:13.525 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1850/7868, Time: 2021-04-05-00:48:13 
+landmark: 0.1029, eye_distance: 0.0070, lip_distance: 0.0181, shape_reg: 0.0009, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1296, 
+2021-04-05 00:51:38.008 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1900/7868, Time: 2021-04-05-00:51:37 
+landmark: 0.1113, eye_distance: 0.0062, lip_distance: 0.0155, shape_reg: 0.0007, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1344, 
+2021-04-05 00:54:59.477 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 1950/7868, Time: 2021-04-05-00:54:59 
+landmark: 0.1068, eye_distance: 0.0068, lip_distance: 0.0284, shape_reg: 0.0008, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1434, 
+2021-04-05 00:58:19.863 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2000/7868, Time: 2021-04-05-00:58:19 
+landmark: 0.0948, eye_distance: 0.0074, lip_distance: 0.0190, shape_reg: 0.0009, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1227, 
+2021-04-05 01:02:58.594 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2050/7868, Time: 2021-04-05-01:02:58 
+landmark: 0.1043, eye_distance: 0.0074, lip_distance: 0.0194, shape_reg: 0.0008, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1326, 
+2021-04-05 01:06:22.152 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2100/7868, Time: 2021-04-05-01:06:22 
+landmark: 0.1060, eye_distance: 0.0059, lip_distance: 0.0158, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1288, 
+2021-04-05 01:09:42.421 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2150/7868, Time: 2021-04-05-01:09:42 
+landmark: 0.1029, eye_distance: 0.0067, lip_distance: 0.0279, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1387, 
+2021-04-05 01:13:03.072 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2200/7868, Time: 2021-04-05-01:13:03 
+landmark: 0.1131, eye_distance: 0.0068, lip_distance: 0.0151, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1361, 
+2021-04-05 01:16:23.919 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2250/7868, Time: 2021-04-05-01:16:23 
+landmark: 0.1175, eye_distance: 0.0061, lip_distance: 0.0290, shape_reg: 0.0005, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1536, 
+2021-04-05 01:20:04.278 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2300/7868, Time: 2021-04-05-01:20:04 
+landmark: 0.1062, eye_distance: 0.0066, lip_distance: 0.0168, shape_reg: 0.0006, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1308, 
+2021-04-05 01:23:43.393 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2350/7868, Time: 2021-04-05-01:23:43 
+landmark: 0.1148, eye_distance: 0.0074, lip_distance: 0.0147, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0001, all_loss: 0.1379, 
+2021-04-05 01:27:21.793 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2400/7868, Time: 2021-04-05-01:27:21 
+landmark: 0.0996, eye_distance: 0.0062, lip_distance: 0.0180, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1248, 
+2021-04-05 01:30:58.521 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2450/7868, Time: 2021-04-05-01:30:58 
+landmark: 0.0935, eye_distance: 0.0073, lip_distance: 0.0209, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1227, 
+2021-04-05 01:34:31.384 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2500/7868, Time: 2021-04-05-01:34:31 
+landmark: 0.1098, eye_distance: 0.0070, lip_distance: 0.0161, shape_reg: 0.0006, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1341, 
+2021-04-05 01:38:00.111 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2550/7868, Time: 2021-04-05-01:38:00 
+landmark: 0.1007, eye_distance: 0.0063, lip_distance: 0.0244, shape_reg: 0.0005, expression_reg: 0.0003, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1324, 
+2021-04-05 01:41:30.358 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2600/7868, Time: 2021-04-05-01:41:30 
+landmark: 0.0826, eye_distance: 0.0073, lip_distance: 0.0160, shape_reg: 0.0008, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1072, 
+2021-04-05 01:45:00.332 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2650/7868, Time: 2021-04-05-01:45:00 
+landmark: 0.0915, eye_distance: 0.0068, lip_distance: 0.0282, shape_reg: 0.0005, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1275, 
+2021-04-05 01:48:25.186 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2700/7868, Time: 2021-04-05-01:48:25 
+landmark: 0.0870, eye_distance: 0.0063, lip_distance: 0.0155, shape_reg: 0.0006, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1099, 
+2021-04-05 01:51:50.777 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2750/7868, Time: 2021-04-05-01:51:50 
+landmark: 0.0807, eye_distance: 0.0066, lip_distance: 0.0160, shape_reg: 0.0007, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1047, 
+2021-04-05 01:55:17.428 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2800/7868, Time: 2021-04-05-01:55:17 
+landmark: 0.0803, eye_distance: 0.0067, lip_distance: 0.0123, shape_reg: 0.0005, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1003, 
+2021-04-05 01:58:43.174 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2850/7868, Time: 2021-04-05-01:58:43 
+landmark: 0.0984, eye_distance: 0.0058, lip_distance: 0.0125, shape_reg: 0.0006, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1179, 
+2021-04-05 02:02:03.043 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2900/7868, Time: 2021-04-05-02:02:03 
+landmark: 0.0894, eye_distance: 0.0069, lip_distance: 0.0168, shape_reg: 0.0006, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1143, 
+2021-04-05 02:05:20.416 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 2950/7868, Time: 2021-04-05-02:05:20 
+landmark: 0.1102, eye_distance: 0.0071, lip_distance: 0.0163, shape_reg: 0.0006, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1348, 
+2021-04-05 02:08:41.364 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3000/7868, Time: 2021-04-05-02:08:41 
+landmark: 0.0833, eye_distance: 0.0059, lip_distance: 0.0174, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1077, 
+2021-04-05 02:13:34.379 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3050/7868, Time: 2021-04-05-02:13:34 
+landmark: 0.0740, eye_distance: 0.0072, lip_distance: 0.0181, shape_reg: 0.0006, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1005, 
+2021-04-05 02:16:53.316 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3100/7868, Time: 2021-04-05-02:16:53 
+landmark: 0.0784, eye_distance: 0.0066, lip_distance: 0.0179, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1040, 
+2021-04-05 02:20:09.859 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3150/7868, Time: 2021-04-05-02:20:09 
+landmark: 0.0811, eye_distance: 0.0069, lip_distance: 0.0120, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1009, 
+2021-04-05 02:23:25.698 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3200/7868, Time: 2021-04-05-02:23:25 
+landmark: 0.0775, eye_distance: 0.0073, lip_distance: 0.0138, shape_reg: 0.0006, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0996, 
+2021-04-05 02:26:43.564 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3250/7868, Time: 2021-04-05-02:26:43 
+landmark: 0.1034, eye_distance: 0.0063, lip_distance: 0.0204, shape_reg: 0.0006, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1312, 
+2021-04-05 02:30:01.405 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3300/7868, Time: 2021-04-05-02:30:01 
+landmark: 0.0906, eye_distance: 0.0063, lip_distance: 0.0152, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1132, 
+2021-04-05 02:33:28.724 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3350/7868, Time: 2021-04-05-02:33:28 
+landmark: 0.0762, eye_distance: 0.0068, lip_distance: 0.0124, shape_reg: 0.0005, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0966, 
+2021-04-05 02:36:50.653 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3400/7868, Time: 2021-04-05-02:36:50 
+landmark: 0.1010, eye_distance: 0.0073, lip_distance: 0.0195, shape_reg: 0.0005, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1288, 
+2021-04-05 02:40:12.188 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3450/7868, Time: 2021-04-05-02:40:11 
+landmark: 0.0798, eye_distance: 0.0066, lip_distance: 0.0150, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1024, 
+2021-04-05 02:43:32.064 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3500/7868, Time: 2021-04-05-02:43:32 
+landmark: 0.0823, eye_distance: 0.0073, lip_distance: 0.0131, shape_reg: 0.0005, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1039, 
+2021-04-05 02:46:55.004 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3550/7868, Time: 2021-04-05-02:46:55 
+landmark: 0.1010, eye_distance: 0.0068, lip_distance: 0.0182, shape_reg: 0.0004, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1269, 
+2021-04-05 02:50:18.432 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3600/7868, Time: 2021-04-05-02:50:18 
+landmark: 0.0715, eye_distance: 0.0060, lip_distance: 0.0103, shape_reg: 0.0005, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0889, 
+2021-04-05 02:53:35.628 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3650/7868, Time: 2021-04-05-02:53:35 
+landmark: 0.0713, eye_distance: 0.0078, lip_distance: 0.0147, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0949, 
+2021-04-05 02:56:50.598 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3700/7868, Time: 2021-04-05-02:56:50 
+landmark: 0.0787, eye_distance: 0.0066, lip_distance: 0.0102, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0965, 
+2021-04-05 03:00:08.869 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3750/7868, Time: 2021-04-05-03:00:08 
+landmark: 0.0971, eye_distance: 0.0067, lip_distance: 0.0166, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1213, 
+2021-04-05 03:03:29.490 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3800/7868, Time: 2021-04-05-03:03:29 
+landmark: 0.0804, eye_distance: 0.0074, lip_distance: 0.0160, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1047, 
+2021-04-05 03:06:45.553 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3850/7868, Time: 2021-04-05-03:06:45 
+landmark: 0.0883, eye_distance: 0.0068, lip_distance: 0.0136, shape_reg: 0.0005, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1099, 
+2021-04-05 03:10:01.929 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3900/7868, Time: 2021-04-05-03:10:01 
+landmark: 0.0909, eye_distance: 0.0071, lip_distance: 0.0133, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1123, 
+2021-04-05 03:13:18.002 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 3950/7868, Time: 2021-04-05-03:13:18 
+landmark: 0.0884, eye_distance: 0.0086, lip_distance: 0.0137, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1119, 
+2021-04-05 03:16:33.732 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4000/7868, Time: 2021-04-05-03:16:33 
+landmark: 0.0738, eye_distance: 0.0075, lip_distance: 0.0109, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0932, 
+2021-04-05 03:21:11.451 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4050/7868, Time: 2021-04-05-03:21:11 
+landmark: 0.0755, eye_distance: 0.0080, lip_distance: 0.0165, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1012, 
+2021-04-05 03:24:24.715 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4100/7868, Time: 2021-04-05-03:24:24 
+landmark: 0.0824, eye_distance: 0.0061, lip_distance: 0.0118, shape_reg: 0.0003, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1011, 
+2021-04-05 03:27:38.892 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4150/7868, Time: 2021-04-05-03:27:38 
+landmark: 0.0742, eye_distance: 0.0074, lip_distance: 0.0168, shape_reg: 0.0005, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0996, 
+2021-04-05 03:30:50.291 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4200/7868, Time: 2021-04-05-03:30:50 
+landmark: 0.0774, eye_distance: 0.0074, lip_distance: 0.0136, shape_reg: 0.0005, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0994, 
+2021-04-05 03:34:00.039 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4250/7868, Time: 2021-04-05-03:34:00 
+landmark: 0.0859, eye_distance: 0.0067, lip_distance: 0.0111, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1048, 
+2021-04-05 03:37:10.944 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4300/7868, Time: 2021-04-05-03:37:10 
+landmark: 0.0800, eye_distance: 0.0075, lip_distance: 0.0110, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0996, 
+2021-04-05 03:40:20.717 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4350/7868, Time: 2021-04-05-03:40:20 
+landmark: 0.0796, eye_distance: 0.0077, lip_distance: 0.0128, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1013, 
+2021-04-05 03:43:27.561 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4400/7868, Time: 2021-04-05-03:43:27 
+landmark: 0.0761, eye_distance: 0.0063, lip_distance: 0.0115, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0950, 
+2021-04-05 03:46:37.188 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4450/7868, Time: 2021-04-05-03:46:36 
+landmark: 0.0672, eye_distance: 0.0074, lip_distance: 0.0167, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0925, 
+2021-04-05 03:49:43.046 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4500/7868, Time: 2021-04-05-03:49:43 
+landmark: 0.0720, eye_distance: 0.0068, lip_distance: 0.0109, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0909, 
+2021-04-05 03:52:50.370 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4550/7868, Time: 2021-04-05-03:52:50 
+landmark: 0.0645, eye_distance: 0.0068, lip_distance: 0.0109, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0835, 
+2021-04-05 03:55:55.622 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4600/7868, Time: 2021-04-05-03:55:55 
+landmark: 0.0727, eye_distance: 0.0078, lip_distance: 0.0153, shape_reg: 0.0004, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0970, 
+2021-04-05 03:59:07.526 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4650/7868, Time: 2021-04-05-03:59:07 
+landmark: 0.0949, eye_distance: 0.0063, lip_distance: 0.0111, shape_reg: 0.0003, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1131, 
+2021-04-05 04:02:35.148 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4700/7868, Time: 2021-04-05-04:02:35 
+landmark: 0.0806, eye_distance: 0.0091, lip_distance: 0.0121, shape_reg: 0.0006, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1031, 
+2021-04-05 04:05:56.530 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4750/7868, Time: 2021-04-05-04:05:56 
+landmark: 0.0851, eye_distance: 0.0054, lip_distance: 0.0113, shape_reg: 0.0005, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1031, 
+2021-04-05 04:09:17.890 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4800/7868, Time: 2021-04-05-04:09:17 
+landmark: 0.0699, eye_distance: 0.0072, lip_distance: 0.0107, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0888, 
+2021-04-05 04:12:37.166 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4850/7868, Time: 2021-04-05-04:12:37 
+landmark: 0.0683, eye_distance: 0.0073, lip_distance: 0.0112, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0880, 
+2021-04-05 04:15:58.459 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4900/7868, Time: 2021-04-05-04:15:58 
+landmark: 0.0852, eye_distance: 0.0071, lip_distance: 0.0104, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1038, 
+2021-04-05 04:19:19.382 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 4950/7868, Time: 2021-04-05-04:19:19 
+landmark: 0.0799, eye_distance: 0.0067, lip_distance: 0.0114, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0990, 
+2021-04-05 04:22:36.579 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5000/7868, Time: 2021-04-05-04:22:36 
+landmark: 0.0740, eye_distance: 0.0072, lip_distance: 0.0118, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0940, 
+2021-04-05 04:27:18.650 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5050/7868, Time: 2021-04-05-04:27:18 
+landmark: 0.0653, eye_distance: 0.0055, lip_distance: 0.0131, shape_reg: 0.0003, expression_reg: 0.0004, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0847, 
+2021-04-05 04:30:40.333 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5100/7868, Time: 2021-04-05-04:30:40 
+landmark: 0.0734, eye_distance: 0.0063, lip_distance: 0.0135, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0942, 
+2021-04-05 04:33:57.665 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5150/7868, Time: 2021-04-05-04:33:57 
+landmark: 0.0742, eye_distance: 0.0060, lip_distance: 0.0099, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0913, 
+2021-04-05 04:37:09.493 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5200/7868, Time: 2021-04-05-04:37:09 
+landmark: 0.0747, eye_distance: 0.0066, lip_distance: 0.0133, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0955, 
+2021-04-05 04:40:22.824 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5250/7868, Time: 2021-04-05-04:40:22 
+landmark: 0.0666, eye_distance: 0.0080, lip_distance: 0.0096, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0853, 
+2021-04-05 04:43:38.569 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5300/7868, Time: 2021-04-05-04:43:38 
+landmark: 0.0800, eye_distance: 0.0069, lip_distance: 0.0129, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1008, 
+2021-04-05 04:46:49.527 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5350/7868, Time: 2021-04-05-04:46:49 
+landmark: 0.0772, eye_distance: 0.0077, lip_distance: 0.0109, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0970, 
+2021-04-05 04:50:04.139 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5400/7868, Time: 2021-04-05-04:50:04 
+landmark: 0.0653, eye_distance: 0.0070, lip_distance: 0.0101, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0833, 
+2021-04-05 04:53:15.262 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5450/7868, Time: 2021-04-05-04:53:15 
+landmark: 0.0733, eye_distance: 0.0082, lip_distance: 0.0160, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0987, 
+2021-04-05 04:56:27.977 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5500/7868, Time: 2021-04-05-04:56:27 
+landmark: 0.0663, eye_distance: 0.0064, lip_distance: 0.0133, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0871, 
+2021-04-05 04:59:39.330 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5550/7868, Time: 2021-04-05-04:59:39 
+landmark: 0.0612, eye_distance: 0.0060, lip_distance: 0.0084, shape_reg: 0.0005, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0768, 
+2021-04-05 05:02:48.652 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5600/7868, Time: 2021-04-05-05:02:48 
+landmark: 0.1176, eye_distance: 0.0072, lip_distance: 0.0097, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1356, 
+2021-04-05 05:05:57.065 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5650/7868, Time: 2021-04-05-05:05:57 
+landmark: 0.0636, eye_distance: 0.0078, lip_distance: 0.0095, shape_reg: 0.0005, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0821, 
+2021-04-05 05:09:04.566 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5700/7868, Time: 2021-04-05-05:09:03 
+landmark: 0.0790, eye_distance: 0.0076, lip_distance: 0.0096, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0972, 
+2021-04-05 05:12:14.509 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5750/7868, Time: 2021-04-05-05:12:14 
+landmark: 0.0608, eye_distance: 0.0073, lip_distance: 0.0141, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0832, 
+2021-04-05 05:15:21.278 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5800/7868, Time: 2021-04-05-05:15:21 
+landmark: 0.0656, eye_distance: 0.0071, lip_distance: 0.0098, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0834, 
+2021-04-05 05:18:31.561 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5850/7868, Time: 2021-04-05-05:18:31 
+landmark: 0.0706, eye_distance: 0.0074, lip_distance: 0.0121, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0911, 
+2021-04-05 05:21:41.567 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5900/7868, Time: 2021-04-05-05:21:41 
+landmark: 0.0629, eye_distance: 0.0066, lip_distance: 0.0105, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0809, 
+2021-04-05 05:24:43.072 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 5950/7868, Time: 2021-04-05-05:24:43 
+landmark: 0.0673, eye_distance: 0.0068, lip_distance: 0.0108, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0859, 
+2021-04-05 05:27:48.383 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6000/7868, Time: 2021-04-05-05:27:48 
+landmark: 0.0649, eye_distance: 0.0065, lip_distance: 0.0096, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0821, 
+2021-04-05 05:32:22.376 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6050/7868, Time: 2021-04-05-05:32:22 
+landmark: 0.0704, eye_distance: 0.0067, lip_distance: 0.0141, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0921, 
+2021-04-05 05:35:27.678 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6100/7868, Time: 2021-04-05-05:35:27 
+landmark: 0.0741, eye_distance: 0.0069, lip_distance: 0.0081, shape_reg: 0.0003, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0899, 
+2021-04-05 05:38:33.495 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6150/7868, Time: 2021-04-05-05:38:33 
+landmark: 0.0654, eye_distance: 0.0059, lip_distance: 0.0096, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0820, 
+2021-04-05 05:41:38.996 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6200/7868, Time: 2021-04-05-05:41:38 
+landmark: 0.0661, eye_distance: 0.0058, lip_distance: 0.0078, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0807, 
+2021-04-05 05:44:44.974 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6250/7868, Time: 2021-04-05-05:44:44 
+landmark: 0.0672, eye_distance: 0.0062, lip_distance: 0.0084, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0830, 
+2021-04-05 05:48:05.010 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6300/7868, Time: 2021-04-05-05:48:05 
+landmark: 0.0677, eye_distance: 0.0063, lip_distance: 0.0087, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0836, 
+2021-04-05 05:51:30.140 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6350/7868, Time: 2021-04-05-05:51:30 
+landmark: 0.0737, eye_distance: 0.0071, lip_distance: 0.0082, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0901, 
+2021-04-05 05:54:52.565 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6400/7868, Time: 2021-04-05-05:54:52 
+landmark: 0.0640, eye_distance: 0.0086, lip_distance: 0.0134, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0870, 
+2021-04-05 05:58:16.579 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6450/7868, Time: 2021-04-05-05:58:16 
+landmark: 0.0860, eye_distance: 0.0070, lip_distance: 0.0109, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1049, 
+2021-04-05 06:01:43.809 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6500/7868, Time: 2021-04-05-06:01:43 
+landmark: 0.0645, eye_distance: 0.0068, lip_distance: 0.0084, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0806, 
+2021-04-05 06:05:06.030 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6550/7868, Time: 2021-04-05-06:05:06 
+landmark: 0.0725, eye_distance: 0.0076, lip_distance: 0.0104, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0915, 
+2021-04-05 06:08:24.548 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6600/7868, Time: 2021-04-05-06:08:24 
+landmark: 0.0687, eye_distance: 0.0064, lip_distance: 0.0107, shape_reg: 0.0004, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0867, 
+2021-04-05 06:11:44.474 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6650/7868, Time: 2021-04-05-06:11:44 
+landmark: 0.0687, eye_distance: 0.0057, lip_distance: 0.0071, shape_reg: 0.0004, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0824, 
+2021-04-05 06:15:02.250 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6700/7868, Time: 2021-04-05-06:15:02 
+landmark: 0.0870, eye_distance: 0.0074, lip_distance: 0.0122, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1076, 
+2021-04-05 06:18:17.931 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6750/7868, Time: 2021-04-05-06:18:17 
+landmark: 0.0638, eye_distance: 0.0066, lip_distance: 0.0114, shape_reg: 0.0005, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0831, 
+2021-04-05 06:21:34.654 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6800/7868, Time: 2021-04-05-06:21:34 
+landmark: 0.0803, eye_distance: 0.0071, lip_distance: 0.0086, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0971, 
+2021-04-05 06:24:44.657 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6850/7868, Time: 2021-04-05-06:24:44 
+landmark: 0.0841, eye_distance: 0.0068, lip_distance: 0.0093, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1013, 
+2021-04-05 06:27:55.007 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6900/7868, Time: 2021-04-05-06:27:55 
+landmark: 0.0623, eye_distance: 0.0072, lip_distance: 0.0082, shape_reg: 0.0004, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0788, 
+2021-04-05 06:31:08.391 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 6950/7868, Time: 2021-04-05-06:31:08 
+landmark: 0.0637, eye_distance: 0.0070, lip_distance: 0.0080, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0797, 
+2021-04-05 06:34:21.024 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7000/7868, Time: 2021-04-05-06:34:21 
+landmark: 0.0649, eye_distance: 0.0071, lip_distance: 0.0093, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0823, 
+2021-04-05 06:38:37.381 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7050/7868, Time: 2021-04-05-06:38:37 
+landmark: 0.0634, eye_distance: 0.0067, lip_distance: 0.0094, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0805, 
+2021-04-05 06:41:48.759 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7100/7868, Time: 2021-04-05-06:41:48 
+landmark: 0.0743, eye_distance: 0.0083, lip_distance: 0.0089, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0925, 
+2021-04-05 06:44:56.713 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7150/7868, Time: 2021-04-05-06:44:56 
+landmark: 0.0624, eye_distance: 0.0075, lip_distance: 0.0081, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0791, 
+2021-04-05 06:48:07.483 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7200/7868, Time: 2021-04-05-06:48:07 
+landmark: 0.0798, eye_distance: 0.0069, lip_distance: 0.0123, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1000, 
+2021-04-05 06:51:16.895 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7250/7868, Time: 2021-04-05-06:51:16 
+landmark: 0.0736, eye_distance: 0.0069, lip_distance: 0.0113, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0930, 
+2021-04-05 06:54:24.742 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7300/7868, Time: 2021-04-05-06:54:24 
+landmark: 0.0620, eye_distance: 0.0085, lip_distance: 0.0079, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0794, 
+2021-04-05 06:57:33.862 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7350/7868, Time: 2021-04-05-06:57:33 
+landmark: 0.0594, eye_distance: 0.0074, lip_distance: 0.0133, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0813, 
+2021-04-05 07:00:37.887 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7400/7868, Time: 2021-04-05-07:00:37 
+landmark: 0.0630, eye_distance: 0.0074, lip_distance: 0.0071, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0785, 
+2021-04-05 07:03:47.790 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7450/7868, Time: 2021-04-05-07:03:47 
+landmark: 0.0637, eye_distance: 0.0071, lip_distance: 0.0068, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0787, 
+2021-04-05 07:06:54.346 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7500/7868, Time: 2021-04-05-07:06:54 
+landmark: 0.0653, eye_distance: 0.0067, lip_distance: 0.0099, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0830, 
+2021-04-05 07:10:01.795 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7550/7868, Time: 2021-04-05-07:10:01 
+landmark: 0.0701, eye_distance: 0.0068, lip_distance: 0.0098, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0876, 
+2021-04-05 07:13:07.361 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7600/7868, Time: 2021-04-05-07:13:07 
+landmark: 0.0965, eye_distance: 0.0069, lip_distance: 0.0105, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1150, 
+2021-04-05 07:16:12.151 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7650/7868, Time: 2021-04-05-07:16:12 
+landmark: 0.0633, eye_distance: 0.0078, lip_distance: 0.0088, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0811, 
+2021-04-05 07:19:17.538 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7700/7868, Time: 2021-04-05-07:19:17 
+landmark: 0.0754, eye_distance: 0.0068, lip_distance: 0.0217, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1049, 
+2021-04-05 07:22:23.017 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7750/7868, Time: 2021-04-05-07:22:22 
+landmark: 0.0654, eye_distance: 0.0076, lip_distance: 0.0105, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0846, 
+2021-04-05 07:25:27.342 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7800/7868, Time: 2021-04-05-07:25:27 
+landmark: 0.0608, eye_distance: 0.0074, lip_distance: 0.0103, shape_reg: 0.0003, expression_reg: 0.0005, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0794, 
+2021-04-05 07:28:29.274 | INFO     | decalib.trainer:fit:267 - Epoch: 0, Iter: 7850/7868, Time: 2021-04-05-07:28:29 
+landmark: 0.0632, eye_distance: 0.0071, lip_distance: 0.0068, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0781, 
+2021-04-05 07:31:30.496 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 32/7868, Time: 2021-04-05-07:31:30 
+landmark: 0.0662, eye_distance: 0.0072, lip_distance: 0.0090, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0835, 
+2021-04-05 07:34:14.234 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 82/7868, Time: 2021-04-05-07:34:14 
+landmark: 0.0750, eye_distance: 0.0074, lip_distance: 0.0072, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0907, 
+2021-04-05 07:37:01.793 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 132/7868, Time: 2021-04-05-07:37:01 
+landmark: 0.0666, eye_distance: 0.0067, lip_distance: 0.0076, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0819, 
+2021-04-05 07:40:59.854 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 182/7868, Time: 2021-04-05-07:40:59 
+landmark: 0.0652, eye_distance: 0.0073, lip_distance: 0.0087, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0823, 
+2021-04-05 07:43:52.625 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 232/7868, Time: 2021-04-05-07:43:52 
+landmark: 0.0621, eye_distance: 0.0077, lip_distance: 0.0093, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0803, 
+2021-04-05 07:46:46.291 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 282/7868, Time: 2021-04-05-07:46:46 
+landmark: 0.0897, eye_distance: 0.0072, lip_distance: 0.0078, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1057, 
+2021-04-05 07:49:35.385 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 332/7868, Time: 2021-04-05-07:49:35 
+landmark: 0.0593, eye_distance: 0.0074, lip_distance: 0.0094, shape_reg: 0.0005, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0773, 
+2021-04-05 07:52:26.732 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 382/7868, Time: 2021-04-05-07:52:26 
+landmark: 0.0677, eye_distance: 0.0068, lip_distance: 0.0083, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0839, 
+2021-04-05 07:55:18.409 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 432/7868, Time: 2021-04-05-07:55:18 
+landmark: 0.0621, eye_distance: 0.0082, lip_distance: 0.0078, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0792, 
+2021-04-05 07:58:10.464 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 482/7868, Time: 2021-04-05-07:58:10 
+landmark: 0.0655, eye_distance: 0.0079, lip_distance: 0.0117, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0862, 
+2021-04-05 08:01:06.278 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 532/7868, Time: 2021-04-05-08:01:06 
+landmark: 0.0609, eye_distance: 0.0063, lip_distance: 0.0075, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0758, 
+2021-04-05 08:04:01.287 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 582/7868, Time: 2021-04-05-08:04:01 
+landmark: 0.0560, eye_distance: 0.0072, lip_distance: 0.0087, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0731, 
+2021-04-05 08:07:09.711 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 632/7868, Time: 2021-04-05-08:07:09 
+landmark: 0.0632, eye_distance: 0.0070, lip_distance: 0.0084, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0797, 
+2021-04-05 08:10:18.587 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 682/7868, Time: 2021-04-05-08:10:18 
+landmark: 0.0655, eye_distance: 0.0073, lip_distance: 0.0082, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0821, 
+2021-04-05 08:13:27.037 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 732/7868, Time: 2021-04-05-08:13:27 
+landmark: 0.0652, eye_distance: 0.0078, lip_distance: 0.0079, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0819, 
+2021-04-05 08:16:43.636 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 782/7868, Time: 2021-04-05-08:16:43 
+landmark: 0.0653, eye_distance: 0.0063, lip_distance: 0.0083, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0810, 
+2021-04-05 08:20:00.187 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 832/7868, Time: 2021-04-05-08:20:00 
+landmark: 0.0709, eye_distance: 0.0080, lip_distance: 0.0098, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0898, 
+2021-04-05 08:23:18.926 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 882/7868, Time: 2021-04-05-08:23:18 
+landmark: 0.0579, eye_distance: 0.0068, lip_distance: 0.0074, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0732, 
+2021-04-05 08:26:38.605 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 932/7868, Time: 2021-04-05-08:26:38 
+landmark: 0.0609, eye_distance: 0.0077, lip_distance: 0.0091, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0789, 
+2021-04-05 08:29:55.346 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 982/7868, Time: 2021-04-05-08:29:55 
+landmark: 0.0664, eye_distance: 0.0075, lip_distance: 0.0087, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0836, 
+2021-04-05 08:33:08.171 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1032/7868, Time: 2021-04-05-08:33:08 
+landmark: 0.0602, eye_distance: 0.0059, lip_distance: 0.0092, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0763, 
+2021-04-05 08:36:25.288 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1082/7868, Time: 2021-04-05-08:36:25 
+landmark: 0.0611, eye_distance: 0.0069, lip_distance: 0.0076, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0767, 
+2021-04-05 08:39:38.879 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1132/7868, Time: 2021-04-05-08:39:38 
+landmark: 0.0646, eye_distance: 0.0062, lip_distance: 0.0066, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0785, 
+2021-04-05 08:43:52.585 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1182/7868, Time: 2021-04-05-08:43:52 
+landmark: 0.0561, eye_distance: 0.0068, lip_distance: 0.0075, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0717, 
+2021-04-05 08:46:53.087 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1232/7868, Time: 2021-04-05-08:46:53 
+landmark: 0.0644, eye_distance: 0.0063, lip_distance: 0.0097, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0816, 
+2021-04-05 08:49:55.013 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1282/7868, Time: 2021-04-05-08:49:55 
+landmark: 0.0944, eye_distance: 0.0069, lip_distance: 0.0081, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1105, 
+2021-04-05 08:53:13.763 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1332/7868, Time: 2021-04-05-08:53:13 
+landmark: 0.0634, eye_distance: 0.0066, lip_distance: 0.0075, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0786, 
+2021-04-05 08:56:27.108 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1382/7868, Time: 2021-04-05-08:56:27 
+landmark: 0.0870, eye_distance: 0.0081, lip_distance: 0.0086, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.1049, 
+2021-04-05 08:59:38.822 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1432/7868, Time: 2021-04-05-08:59:38 
+landmark: 0.0777, eye_distance: 0.0064, lip_distance: 0.0102, shape_reg: 0.0003, expression_reg: 0.0006, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0953, 
+2021-04-05 09:02:48.864 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1482/7868, Time: 2021-04-05-09:02:48 
+landmark: 0.0596, eye_distance: 0.0079, lip_distance: 0.0079, shape_reg: 0.0004, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0765, 
+2021-04-05 09:06:01.785 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1532/7868, Time: 2021-04-05-09:06:01 
+landmark: 0.0565, eye_distance: 0.0077, lip_distance: 0.0060, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0714, 
+2021-04-05 09:09:11.801 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1582/7868, Time: 2021-04-05-09:09:11 
+landmark: 0.0617, eye_distance: 0.0065, lip_distance: 0.0067, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0761, 
+2021-04-05 09:12:19.130 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1632/7868, Time: 2021-04-05-09:12:19 
+landmark: 0.0566, eye_distance: 0.0060, lip_distance: 0.0086, shape_reg: 0.0002, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0722, 
+2021-04-05 09:15:25.649 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1682/7868, Time: 2021-04-05-09:15:25 
+landmark: 0.0595, eye_distance: 0.0068, lip_distance: 0.0103, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0777, 
+2021-04-05 09:18:31.692 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1732/7868, Time: 2021-04-05-09:18:31 
+landmark: 0.0592, eye_distance: 0.0074, lip_distance: 0.0083, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0761, 
+2021-04-05 09:21:33.874 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1782/7868, Time: 2021-04-05-09:21:33 
+landmark: 0.0613, eye_distance: 0.0058, lip_distance: 0.0096, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0778, 
+2021-04-05 09:25:03.786 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1832/7868, Time: 2021-04-05-09:25:03 
+landmark: 0.0576, eye_distance: 0.0075, lip_distance: 0.0056, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0716, 
+2021-04-05 09:28:28.940 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1882/7868, Time: 2021-04-05-09:28:28 
+landmark: 0.0628, eye_distance: 0.0077, lip_distance: 0.0102, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0819, 
+2021-04-05 09:31:56.139 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1932/7868, Time: 2021-04-05-09:31:56 
+landmark: 0.0660, eye_distance: 0.0064, lip_distance: 0.0082, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0818, 
+2021-04-05 09:35:19.407 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 1982/7868, Time: 2021-04-05-09:35:19 
+landmark: 0.0553, eye_distance: 0.0076, lip_distance: 0.0091, shape_reg: 0.0003, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0734, 
+2021-04-05 09:38:39.586 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2032/7868, Time: 2021-04-05-09:38:39 
+landmark: 0.0583, eye_distance: 0.0070, lip_distance: 0.0087, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0752, 
+2021-04-05 09:42:01.966 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2082/7868, Time: 2021-04-05-09:42:01 
+landmark: 0.0605, eye_distance: 0.0060, lip_distance: 0.0082, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0757, 
+2021-04-05 09:45:29.118 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2132/7868, Time: 2021-04-05-09:45:29 
+landmark: 0.0613, eye_distance: 0.0081, lip_distance: 0.0085, shape_reg: 0.0004, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0792, 
+2021-04-05 09:50:01.606 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2182/7868, Time: 2021-04-05-09:50:01 
+landmark: 0.0569, eye_distance: 0.0067, lip_distance: 0.0171, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0818, 
+2021-04-05 09:53:22.213 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2232/7868, Time: 2021-04-05-09:53:22 
+landmark: 0.0567, eye_distance: 0.0064, lip_distance: 0.0074, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0716, 
+2021-04-05 09:56:41.225 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2282/7868, Time: 2021-04-05-09:56:41 
+landmark: 0.0603, eye_distance: 0.0070, lip_distance: 0.0073, shape_reg: 0.0003, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0760, 
+2021-04-05 09:59:56.195 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2332/7868, Time: 2021-04-05-09:59:56 
+landmark: 0.0596, eye_distance: 0.0077, lip_distance: 0.0078, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0762, 
+2021-04-05 10:03:10.065 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2382/7868, Time: 2021-04-05-10:03:10 
+landmark: 0.0574, eye_distance: 0.0079, lip_distance: 0.0070, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0733, 
+2021-04-05 10:06:21.278 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2432/7868, Time: 2021-04-05-10:06:21 
+landmark: 0.0564, eye_distance: 0.0072, lip_distance: 0.0073, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0721, 
+2021-04-05 10:09:36.848 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2482/7868, Time: 2021-04-05-10:09:36 
+landmark: 0.0642, eye_distance: 0.0083, lip_distance: 0.0071, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0806, 
+2021-04-05 10:12:49.851 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2532/7868, Time: 2021-04-05-10:12:49 
+landmark: 0.0590, eye_distance: 0.0076, lip_distance: 0.0072, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0750, 
+2021-04-05 10:15:58.124 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2582/7868, Time: 2021-04-05-10:15:58 
+landmark: 0.0566, eye_distance: 0.0064, lip_distance: 0.0063, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0704, 
+2021-04-05 10:19:05.210 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2632/7868, Time: 2021-04-05-10:19:05 
+landmark: 0.0691, eye_distance: 0.0080, lip_distance: 0.0065, shape_reg: 0.0003, expression_reg: 0.0011, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0849, 
+2021-04-05 10:22:12.061 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2682/7868, Time: 2021-04-05-10:22:12 
+landmark: 0.0562, eye_distance: 0.0061, lip_distance: 0.0059, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0694, 
+2021-04-05 10:25:21.572 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2732/7868, Time: 2021-04-05-10:25:21 
+landmark: 0.0570, eye_distance: 0.0056, lip_distance: 0.0094, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0732, 
+2021-04-05 10:28:28.843 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2782/7868, Time: 2021-04-05-10:28:28 
+landmark: 0.0574, eye_distance: 0.0074, lip_distance: 0.0086, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0746, 
+2021-04-05 10:31:39.878 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2832/7868, Time: 2021-04-05-10:31:39 
+landmark: 0.0581, eye_distance: 0.0068, lip_distance: 0.0162, shape_reg: 0.0002, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0821, 
+2021-04-05 10:34:53.519 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2882/7868, Time: 2021-04-05-10:34:53 
+landmark: 0.0636, eye_distance: 0.0061, lip_distance: 0.0080, shape_reg: 0.0003, expression_reg: 0.0007, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0787, 
+2021-04-05 10:38:10.955 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2932/7868, Time: 2021-04-05-10:38:10 
+landmark: 0.0619, eye_distance: 0.0078, lip_distance: 0.0131, shape_reg: 0.0003, expression_reg: 0.0009, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0841, 
+2021-04-05 10:41:25.790 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 2982/7868, Time: 2021-04-05-10:41:25 
+landmark: 0.0746, eye_distance: 0.0084, lip_distance: 0.0136, shape_reg: 0.0003, expression_reg: 0.0010, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0979, 
+2021-04-05 10:44:37.901 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 3032/7868, Time: 2021-04-05-10:44:37 
+landmark: 0.0604, eye_distance: 0.0065, lip_distance: 0.0155, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0835, 
+2021-04-05 10:48:03.996 | INFO     | decalib.trainer:fit:267 - Epoch: 1, Iter: 3082/7868, Time: 2021-04-05-10:48:03 
+landmark: 0.0620, eye_distance: 0.0068, lip_distance: 0.0092, shape_reg: 0.0003, expression_reg: 0.0008, tex_reg: 0.0000, light_reg: 0.0000, all_loss: 0.0791, 

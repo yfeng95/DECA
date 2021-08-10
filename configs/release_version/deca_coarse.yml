@@ -1,0 +1,24 @@
+# '''
+# second step:
+# train the coarse model for 1.5 epochs with a batch size of 32, with 4 images per subject
+# with 𝜆𝑝ℎ𝑜=2.0, 𝜆𝑖𝑑=0.2, 𝜆𝑠𝑐=1.0, 𝜆𝑙𝑚𝑘=1.0, 𝜆𝑒𝑦𝑒=1.0, 𝜆𝜷=1𝑒−4, and 𝜆𝝍=1𝑒−4.
+
+# Time:
+# around 15min/1000iterations
+# in total, needs around 
+output_dir: "/ps/scratch/yfeng/Data/Projects-data/DECA-training/training/DECA_release_version/coarse"
+pretrained_modelpath: "/ps/scratch/yfeng/Data/Projects-data/DECA-training/training/DECA_release_version/pretrain/model.tar"
+dataset:
+  batch_size: 8
+  K: 2
+train:
+  resume: True
+  max_epochs: 10
+  max_steps: 200000
+  log_steps: 10
+  vis_steps: 500
+  checkpoint_steps: 1000
+  val_steps: 500
+  eval_steps: 1000
+
+# python main_train_deca_release.py --cfg configs/release_version/deca_coarse.yml

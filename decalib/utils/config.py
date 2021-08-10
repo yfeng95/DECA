@@ -13,8 +13,8 @@ cfg.deca_dir = abs_deca_dir
 cfg.device = 'cuda'
 cfg.device_id = '0'
 
-cfg.pretrained_modelpath = os.path.join(cfg.deca_dir, 'data', 'deca_model.tar')
-
+cfg.pretrained_modelpath = '' #os.path.join(cfg.deca_dir, 'data', 'deca_model.tar')
+cfg.output_dir = ''
 # ---------------------------------------------------------------------------- #
 # Options for Face model
 # ---------------------------------------------------------------------------- #
@@ -38,8 +38,10 @@ cfg.model.n_exp = 50
 cfg.model.n_cam = 3
 cfg.model.n_pose = 6
 cfg.model.n_light = 27
-cfg.model.use_tex = False
-cfg.model.jaw_type = 'aa' # default use axis angle, another option: euler
+cfg.model.use_tex = True
+cfg.model.jaw_type = 'aa' # default use axis angle, another option: euler. Note that: aa is not stable in the beginning
+# face recognition model
+cfg.model.fr_model_path = os.path.join(cfg.deca_dir, 'data', 'resnet50_ft_weight.pkl')
 
 ## details
 cfg.model.n_detail = 128
@@ -49,9 +51,66 @@ cfg.model.max_z = 0.01
 # Options for Dataset
 # ---------------------------------------------------------------------------- #
 cfg.dataset = CN()
-cfg.dataset.batch_size = 24
+cfg.dataset.training_data = ['vggface2', 'ethnicity']
+# cfg.dataset.training_data = ['ethnicity']
+cfg.dataset.eval_data = ['aflw2000']
+cfg.dataset.test_data = ['']
+cfg.dataset.batch_size = 2
+cfg.dataset.K = 4
+cfg.dataset.isSingle = False
 cfg.dataset.num_workers = 2
 cfg.dataset.image_size = 224
+cfg.dataset.scale_min = 1.4
+cfg.dataset.scale_max = 1.8
+cfg.dataset.trans_scale = 0.
+
+# ---------------------------------------------------------------------------- #
+# Options for training
+# ---------------------------------------------------------------------------- #
+cfg.train = CN()
+cfg.train.train_detail = False
+cfg.train.max_epochs = 500
+cfg.train.max_steps = 1000000
+cfg.train.lr = 1e-4
+cfg.train.log_dir = 'logs'
+cfg.train.log_steps = 10
+cfg.train.vis_dir = 'train_images'
+cfg.train.vis_steps = 200
+cfg.train.write_summary = True
+cfg.train.checkpoint_steps = 500
+cfg.train.val_steps = 500
+cfg.train.val_vis_dir = 'val_images'
+cfg.train.eval_steps = 5000
+cfg.train.resume = True
+
+# ---------------------------------------------------------------------------- #
+# Options for Losses
+# ---------------------------------------------------------------------------- #
+cfg.loss = CN()
+cfg.loss.lmk = 1.0
+cfg.loss.useWlmk = True
+cfg.loss.eyed = 1.0
+cfg.loss.lipd = 0.5
+cfg.loss.photo = 2.0
+cfg.loss.useSeg = True
+cfg.loss.id = 0.2
+cfg.loss.id_shape_only = True
+cfg.loss.reg_shape = 1e-04
+cfg.loss.reg_exp = 1e-04
+cfg.loss.reg_tex = 1e-04
+cfg.loss.reg_light = 1.
+cfg.loss.reg_jaw_pose = 0. #1.
+cfg.loss.use_gender_prior = False
+cfg.loss.shape_consistency = True
+# loss for detail
+cfg.loss.detail_consistency = True
+cfg.loss.useConstraint = True
+cfg.loss.mrf = 5e-2
+cfg.loss.photo_D = 2.
+cfg.loss.reg_sym = 0.005
+cfg.loss.reg_z = 0.005
+cfg.loss.reg_diff = 0.005
+
 
 def get_cfg_defaults():
     """Get a yacs CfgNode object with default values for my_project."""
@@ -66,11 +125,15 @@ def update_cfg(cfg, cfg_file):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--cfg', type=str, help='cfg file path')
+    parser.add_argument('--mode', type=str, default = 'train', help='deca mode')
 
     args = parser.parse_args()
     print(args, end='\n\n')
 
     cfg = get_cfg_defaults()
+    cfg.cfg_file = None
+    cfg.mode = args.mode
+    # import ipdb; ipdb.set_trace()
     if args.cfg is not None:
         cfg_file = args.cfg
         cfg = update_cfg(cfg, args.cfg)

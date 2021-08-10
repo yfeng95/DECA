@@ -88,6 +88,35 @@ The left figure compares the cumulative error of our approach and other recent m
 
 For more details of the evaluation, please check our [arXiv paper](https://arxiv.org/abs/2012.04012). 
 
+## Training
+1. Prepare Training Data
+
+    a. Download image data  
+    In DECA, we use [VGGFace2](https://arxiv.org/pdf/1710.08092.pdf), [BUPT-Balancedface](http://www.whdeng.cn/RFW/Trainingdataste.html) and [VoxCeleb2](https://www.robots.ox.ac.uk/~vgg/data/voxceleb/vox2.html)  
+
+    b. Prepare label  
+    [FAN](https://github.com/1adrianb/2D-and-3D-face-alignment) to predict 68 2D landmark  
+    [face_segmentation](https://github.com/YuvalNirkin/face_segmentation) to get skin mask  
+
+    c. Modify dataloader   
+    Dataloaders for different datasets are in decalib/datasets, use the right path for prepared images and labels. 
+
+2. Download face recognition trained model  
+    We use the model from [VGGFace2-pytorch](https://github.com/cydonia999/VGGFace2-pytorch) for calculating identity loss,
+    download [resnet50_ft](https://drive.google.com/file/d/1A94PAAnwk6L7hXdBXLFosB_s0SzEhAFU/view),
+    and put it into ./data  
+
+3. Start training
+
+    Train from scratch: 
+    ```bash
+    python main_train.py --cfg configs/release_version/deca_pretrain.yml 
+    python main_train.py --cfg configs/release_version/deca_coarse.yml 
+    python main_train.py --cfg configs/release_version/deca_detail.yml 
+    ```
+    In the yml files, write the right path for 'output_dir' and 'pretrained_modelpath'.  
+    You can also use [released model](https://drive.google.com/file/d/1rp8kdyLPvErw2dTmqtjISRVvQLj6Yzje/view) as pretrained model, then ignor the pretrain step.
+
 ## Citation
 If you find our work useful to your research, please consider citing:
 ```
@@ -114,6 +143,9 @@ Here are some great resources we benefit:
 - [Pytorch3D](https://pytorch3d.org/), [neural_renderer](https://github.com/daniilidis-group/neural_renderer), [SoftRas](https://github.com/ShichenLiu/SoftRas) for rendering  
 - [kornia](https://github.com/kornia/kornia) for image/rotation processing  
 - [face-alignment](https://github.com/1adrianb/face-alignment) for cropping   
+- [FAN](https://github.com/1adrianb/2D-and-3D-face-alignment) for landmark detection
+- [face_segmentation](https://github.com/YuvalNirkin/face_segmentation) for skin mask
+- [VGGFace2-pytorch](https://github.com/cydonia999/VGGFace2-pytorch) for identity loss  
 
 We would also like to thank other recent public 3D face reconstruction works that allow us to easily perform quantitative and qualitative comparisons :)  
 [RingNet](https://github.com/soubhiksanyal/RingNet), 

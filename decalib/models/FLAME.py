@@ -183,6 +183,8 @@ class FLAME(nn.Module):
                 landmarks: N X number of landmarks X 3
         """
         batch_size = shape_params.shape[0]
+        if pose_params is None:
+            pose_params = self.eye_pose.expand(batch_size, -1)
         if eye_pose_params is None:
             eye_pose_params = self.eye_pose.expand(batch_size, -1)
         betas = torch.cat([shape_params, expression_params], dim=1)

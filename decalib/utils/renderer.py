@@ -313,20 +313,21 @@ class SRenderY(nn.Module):
         depth_images = rendering[:, :1, :, :]
         return depth_images
     
-    def render_normal(self, transformed_vertices, normals):
+    def render_colors(self, transformed_vertices, colors):
         '''
-        -- rendering normal
+        -- rendering colors: could be rgb color/ normals, etc
+            colors: [bz, num of vertices, 3]
         '''
-        batch_size = normals.shape[0]
+        batch_size = colors.shape[0]
 
         # Attributes
-        attributes = util.face_vertices(normals, self.faces.expand(batch_size, -1, -1))
+        attributes = util.face_vertices(colors, self.faces.expand(batch_size, -1, -1))
         # rasterize
         rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes)
         ####
-        alpha_images = rendering[:, -1, :, :][:, None, :, :].detach()
-        normal_images = rendering[:, :3, :, :]
-        return normal_images
+        alpha_images = rendering[:, [-1], :, :].detach()
+        images = rendering[:, :3, :, :]* alpha_images
+        return images
 
     def world2uv(self, vertices):
         '''

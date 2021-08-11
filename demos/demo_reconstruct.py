@@ -20,6 +20,7 @@ from time import time
 from scipy.io import savemat
 import argparse
 from tqdm import tqdm
+import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from decalib.deca import DECA
@@ -42,8 +43,9 @@ def main(args):
     for i in tqdm(range(len(testdata))):
         name = testdata[i]['imagename']
         images = testdata[i]['image'].to(device)[None,...]
-        codedict = deca.encode(images)
-        opdict, visdict = deca.decode(codedict) #tensor
+        with torch.no_grad():
+            codedict = deca.encode(images)
+            opdict, visdict = deca.decode(codedict) #tensor
         if args.saveDepth or args.saveKpt or args.saveObj or args.saveMat or args.saveImages:
             os.makedirs(os.path.join(savefolder, name), exist_ok=True)
         # -- save results

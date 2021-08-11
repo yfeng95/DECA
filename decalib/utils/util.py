@@ -25,7 +25,8 @@ import cv2
 import torchvision
 
 def upsample_mesh(vertices, normals, faces, displacement_map, texture_map, dense_template):
-    ''' upsampling coarse mesh (with displacment map)
+    ''' Credit to Timo
+    upsampling coarse mesh (with displacment map)
         vertices: vertices of coarse mesh, [nv, 3]
         normals: vertex normals, [nv, 3]
         faces: faces of coarse mesh, [nf, 3]
@@ -543,11 +544,11 @@ def plot_kpts(image, kpts, color = 'r'):
                 c = (0, 255, 0)
             else:
                 c = (0, 0, 255)
-        image = cv2.circle(image,(st[0], st[1]), 1, c, 2)  
+        image = cv2.circle(image,(int(st[0]), int(st[1])), 1, c, 2)  
         if i in end_list:
             continue
         ed = kpts[i + 1, :2]
-        image = cv2.line(image, (st[0], st[1]), (ed[0], ed[1]), (255, 255, 255), 1)
+        image = cv2.line(image, (int(st[0]), int(st[1])), (int(ed[0]), int(ed[1])), (255, 255, 255), 1)
 
     return image
 

@@ -44,8 +44,9 @@ def main(args):
     for i in range(len(testdata)):
         name = testdata[i]['imagename']
         images = testdata[i]['image'].to(device)[None,...]
-        codedict = deca.encode(images)
-        opdict, visdict = deca.decode(codedict) #tensor
+        with torch.no_grad():
+            codedict = deca.encode(images)
+            opdict, visdict = deca.decode(codedict) #tensor
         ### show shape with different views and expressions
         visdict_list = []
         max_yaw = 30

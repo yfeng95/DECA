@@ -42,14 +42,16 @@ def main(args):
     name = testdata[i]['imagename']
     savepath = '{}/{}.jpg'.format(savefolder, name)
     images = testdata[i]['image'].to(device)[None,...]
-    id_codedict = deca.encode(images)
+    with torch.no_grad():
+        id_codedict = deca.encode(images)
     id_opdict, id_visdict = deca.decode(id_codedict)
     id_visdict = {x:id_visdict[x] for x in ['inputs', 'shape_detail_images']}   
 
     # -- expression transfer
     # exp code from image
     exp_images = expdata[i]['image'].to(device)[None,...]
-    exp_codedict = deca.encode(exp_images)
+    with torch.no_grad():
+        exp_codedict = deca.encode(exp_images)
     # transfer exp code
     id_codedict['pose'][:,3:] = exp_codedict['pose'][:,3:]
     id_codedict['exp'] = exp_codedict['exp']

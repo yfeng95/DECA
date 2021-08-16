@@ -536,7 +536,6 @@ def plot_kpts(image, kpts, color = 'r'):
         c = (255, 0, 0)
     image = image.copy()
     kpts = kpts.copy()
-
     for i in range(kpts.shape[0]):
         st = kpts[i, :2]
         if kpts.shape[1]==4:
@@ -570,7 +569,7 @@ def plot_verts(image, kpts, color = 'r'):
 
     for i in range(kpts.shape[0]):
         st = kpts[i, :2]
-        image = cv2.circle(image,(st[0], st[1]), 1, c, 2)  
+        image = cv2.circle(image,(int(st[0]), int(st[1])), 1, c, 2)  
 
     return image
 
@@ -585,7 +584,8 @@ def tensor_vis_landmarks(images, landmarks, gt_landmarks=None, color = 'g', isSc
         image = images[i]
         image = image.transpose(1,2,0)[:,:,[2,1,0]].copy(); image = (image*255)
         if isScale:
-            predicted_landmark = predicted_landmarks[i]*image.shape[0]/2 + image.shape[0]/2
+            predicted_landmark = predicted_landmarks[i]
+            predicted_landmark[...,:3] = predicted_landmark[...,:3]*image.shape[0]/2 + image.shape[0]/2
         else:
             predicted_landmark = predicted_landmarks[i]
         if predicted_landmark.shape[0] == 68:

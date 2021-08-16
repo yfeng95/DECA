@@ -203,7 +203,7 @@ class DECA(nn.Module):
             opdict['displacement_map'] = uv_z+self.fixed_uv_dis[None,None,:,:]
         
         if vis_lmk:
-            landmarks3d_vis = self.visofp(ops['transformed_normals'])
+            landmarks3d_vis = self.visofp(ops['transformed_normals'])#/self.image_size
             landmarks3d = torch.cat([landmarks3d, landmarks3d_vis], dim=2)
             opdict['landmarks3d'] = landmarks3d
 

@@ -50,7 +50,7 @@ def main(args):
             os.makedirs(os.path.join(savefolder, name), exist_ok=True)
         # -- save results
         if args.saveDepth:
-            depth_image = deca.render.render_depth(opdict['transformed_vertices']).repeat(1,3,1,1)
+            depth_image = deca.render.render_depth(opdict['trans_verts']).repeat(1,3,1,1)
             visdict['depth_images'] = depth_image
             cv2.imwrite(os.path.join(savefolder, name, name + '_depth.jpg'), util.tensor2image(depth_image[0]))
         if args.saveKpt:

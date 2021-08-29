@@ -34,7 +34,7 @@ def main(args):
     os.makedirs(savefolder, exist_ok=True)
 
     # load test images 
-    testdata = datasets.TestData(args.inputpath, iscrop=args.iscrop, face_detector=args.detector, scale=1.4)
+    testdata = datasets.TestData(args.inputpath, iscrop=args.iscrop, face_detector=args.detector)
 
     # run DECA
     deca_cfg.model.use_tex = args.useTex

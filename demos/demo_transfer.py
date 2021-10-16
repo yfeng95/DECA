@@ -18,6 +18,7 @@ import cv2
 import numpy as np
 from time import time
 import argparse
+import torch
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from decalib.deca import DECA

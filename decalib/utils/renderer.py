@@ -19,11 +19,90 @@ import torch.nn as nn
 import torch.nn.functional as F
 from skimage.io import imread
 import imageio
-from pytorch3d.structures import Meshes
-from pytorch3d.io import load_obj
-from pytorch3d.renderer.mesh import rasterize_meshes
 from . import util
-# from .rasterizer.standard_rasterize_cuda import standard_rasterize
+
+def set_rasterizer(type = 'pytorch3d'):
+    if type == 'pytorch3d':
+        global Meshes, load_obj, rasterize_meshes
+        from pytorch3d.structures import Meshes
+        from pytorch3d.io import load_obj
+        from pytorch3d.renderer.mesh import rasterize_meshes
+    elif type == 'standard':
+        global standard_rasterize, load_obj
+        import os
+        from .util import load_obj
+        # Use JIT Compiling Extensions
+        # ref: https://pytorch.org/tutorials/advanced/cpp_extension.html
+        from torch.utils.cpp_extension import load, CUDA_HOME
+        curr_dir = os.path.dirname(__file__)
+        standard_rasterize_cuda = \
+            load(name='standard_rasterize_cuda', 
+                sources=[f'{curr_dir}/rasterizer/standard_rasterize_cuda.cpp', f'{curr_dir}/rasterizer/standard_rasterize_cuda_kernel.cu'], 
+                extra_cuda_cflags = ['-std=c++14', '-ccbin=$$(which gcc-7)']) # cuda10.2 is not compatible with gcc9. Specify gcc 7 
+        from standard_rasterize_cuda import standard_rasterize
+        # If JIT does not work, try manually installation first
+        # 1. see instruction here: pixielib/utils/rasterizer/INSTALL.md
+        # 2. add this: "from .rasterizer.standard_rasterize_cuda import standard_rasterize" here
+
+class StandardRasterizer(nn.Module):
+    """ Alg: https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation
+    Notice:
+        x,y,z are in image space, normalized to [-1, 1]
+        can render non-squared image
+        not differentiable
+    """
+    def __init__(self, height, width=None):
+        """
+        use fixed raster_settings for rendering faces
+        """
+        super().__init__()
+        if width is None:
+            width = height
+        self.h = h = height; self.w = w = width
+
+    def forward(self, vertices, faces, attributes=None, h=None, w=None):
+        device = vertices.device
+        if h is None:
+            h = self.h
+        if w is None:
+            w = self.h; 
+        bz = vertices.shape[0]
+        depth_buffer = torch.zeros([bz, h, w]).float().to(device) + 1e6
+        triangle_buffer = torch.zeros([bz, h, w]).int().to(device) - 1
+        baryw_buffer = torch.zeros([bz, h, w, 3]).float().to(device)
+        vert_vis = torch.zeros([bz, vertices.shape[1]]).float().to(device)
+        vertices = vertices.clone().float()
+        # compatibale with pytorch3d ndc, see https://github.com/facebookresearch/pytorch3d/blob/e42b0c4f704fa0f5e262f370dccac537b5edf2b1/pytorch3d/csrc/rasterize_meshes/rasterize_meshes.cu#L232
+        vertices[...,:2] = -vertices[...,:2]
+        vertices[...,0] = vertices[..., 0]*w/2 + w/2
+        vertices[...,1] = vertices[..., 1]*h/2 + h/2
+        vertices[...,0] = w - 1 - vertices[..., 0]
+        vertices[...,1] = h - 1 - vertices[..., 1]
+        vertices[...,:2] = -1 + (2*vertices[...,:2] + 1)/h
+        #
+        vertices = vertices.clone().float()
+        vertices[...,0] = vertices[..., 0]*w/2 + w/2 
+        vertices[...,1] = vertices[..., 1]*h/2 + h/2 
+        vertices[...,2] = vertices[..., 2]*w/2
+        f_vs = util.face_vertices(vertices, faces)
+
+        standard_rasterize(f_vs, depth_buffer, triangle_buffer, baryw_buffer, h, w)
+        pix_to_face = triangle_buffer[:,:,:,None].long()
+        bary_coords = baryw_buffer[:,:,:,None,:]
+        vismask = (pix_to_face > -1).float()
+        D = attributes.shape[-1]
+        attributes = attributes.clone(); attributes = attributes.view(attributes.shape[0]*attributes.shape[1], 3, attributes.shape[-1])
+        N, H, W, K, _ = bary_coords.shape
+        mask = pix_to_face == -1
+        pix_to_face = pix_to_face.clone()
+        pix_to_face[mask] = 0
+        idx = pix_to_face.view(N * H * W * K, 1, 1).expand(N * H * W * K, 3, D)
+        pixel_face_vals = attributes.gather(0, idx).view(N, H, W, K, 3, D)
+        pixel_vals = (bary_coords[..., None] * pixel_face_vals).sum(dim=-2)
+        pixel_vals[mask] = 0  # Replace masked values in output.
+        pixel_vals = pixel_vals[:,:,:,0].permute(0,3,1,2)
+        pixel_vals = torch.cat([pixel_vals, vismask[:,:,:,0][:,None,:,:]], dim=1)
+        return pixel_vals
 
 class Pytorch3dRasterizer(nn.Module):
     """  Borrowed from https://github.com/facebookresearch/pytorch3d
@@ -82,15 +161,23 @@ class SRenderY(nn.Module):
         super(SRenderY, self).__init__()
         self.image_size = image_size
         self.uv_size = uv_size
-
-        verts, faces, aux = load_obj(obj_filename)
-        uvcoords = aux.verts_uvs[None, ...]      # (N, V, 2)
-        uvfaces = faces.textures_idx[None, ...] # (N, F, 3)
-        faces = faces.verts_idx[None,...]
-
         if rasterizer_type == 'pytorch3d':
             self.rasterizer = Pytorch3dRasterizer(image_size)
             self.uv_rasterizer = Pytorch3dRasterizer(uv_size)
+            verts, faces, aux = load_obj(obj_filename)
+            uvcoords = aux.verts_uvs[None, ...]      # (N, V, 2)
+            uvfaces = faces.textures_idx[None, ...] # (N, F, 3)
+            faces = faces.verts_idx[None,...]
+        elif rasterizer_type == 'standard':
+            self.rasterizer = StandardRasterizer(image_size)
+            self.uv_rasterizer = StandardRasterizer(uv_size)
+            verts, uvcoords, faces, uvfaces = load_obj(obj_filename)
+            verts = verts[None, ...]
+            uvcoords = uvcoords[None, ...]
+            faces = faces[None, ...]
+            uvfaces = uvfaces[None, ...]
+        else:
+            NotImplementedError
 
         # faces
         dense_triangles = util.generate_triangles(uv_size, uv_size)

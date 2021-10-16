@@ -33,9 +33,9 @@ Clone the repo:
   ```
   Or use virtual environment by runing 
   ```bash
-  bash install_pip.sh
+  bash install_conda.sh
   ```
-  Then follow the instruction to install [pytorch3d](https://github.com/facebookresearch/pytorch3d/blob/master/INSTALL.md).
+  For visualization, we use our rasterizer that uses pytorch JIT Compiling Extensions. If there occurs a compiling error, you can install [pytorch3d](https://github.com/facebookresearch/pytorch3d/blob/master/INSTALL.md) instead and set --rasterizer_type=pytorch3d when running the demos.
 
 ### Usage
 1. Prepare data   
@@ -50,10 +50,10 @@ Clone the repo:
     ```   
     to visualize the predicted 2D landmanks, 3D landmarks (red means non-visible points), coarse geometry, detailed geometry, and depth.   
     <p align="center">   
-    <img src="TestSamples/examples/results/id04657-PPHljWCZ53c-000565_inputs_inputs_vis.jpg">
+    <img src="Doc/images/id04657-PPHljWCZ53c-000565_inputs_inputs_vis.jpg">
     </p>  
     <p align="center">   
-    <img src="TestSamples/examples/results/IMG_0392_inputs_vis.jpg">
+    <img src="Doc/images/IMG_0392_inputs_vis.jpg">
     </p>  
     You can also generate an obj file (which can be opened with Meshlab) that includes extracted texture from the input image.  
 

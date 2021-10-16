@@ -41,9 +41,8 @@ Thumbs.db
 __pycache__
 
 ## deca data
-results
+*results*
 # *_vis.jpg
-
 ## internal use
 cluster_scripts
 internal

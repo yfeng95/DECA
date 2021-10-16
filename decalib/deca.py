@@ -24,7 +24,7 @@ from time import time
 from skimage.io import imread
 import cv2
 import pickle
-from .utils.renderer import SRenderY
+from .utils.renderer import SRenderY, set_rasterizer
 from .models.encoders import ResnetEncoder
 from .models.FLAME import FLAME, FLAMETex
 from .models.decoders import Generator
@@ -49,7 +49,8 @@ class DECA(nn.Module):
         self._setup_renderer(self.cfg.model)
 
     def _setup_renderer(self, model_cfg):
-        self.render = SRenderY(self.image_size, obj_filename=model_cfg.topology_path, uv_size=model_cfg.uv_size).to(self.device)
+        set_rasterizer(self.cfg.rasterizer_type)
+        self.render = SRenderY(self.image_size, obj_filename=model_cfg.topology_path, uv_size=model_cfg.uv_size, rasterizer_type=self.cfg.rasterizer_type).to(self.device)
         # face mask for rendering details
         mask = imread(model_cfg.face_eye_mask_path).astype(np.float32)/255.; mask = torch.from_numpy(mask[:,:,0])[None,None,:,:].contiguous()
         self.uv_face_eye_mask = F.interpolate(mask, [model_cfg.uv_size, model_cfg.uv_size]).to(self.device)

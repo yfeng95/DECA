@@ -36,6 +36,7 @@ def main(args):
 
     # run DECA
     deca_cfg.model.use_tex = args.useTex
+    deca_cfg.rasterizer_type = args.rasterizer_type
     deca = DECA(config = deca_cfg, device=device)
     # identity reference
     i = 0
@@ -102,6 +103,9 @@ if __name__ == '__main__':
                         help='path to the output directory, where results(obj, txt files) will be stored.')
     parser.add_argument('--device', default='cuda', type=str,
                         help='set device, cpu for using cpu' )
+    # rendering option
+    parser.add_argument('--rasterizer_type', default='standard', type=str,
+                        help='rasterizer type: pytorch3d or standard' )
     # process test images
     parser.add_argument('--iscrop', default=True, type=lambda x: x.lower() in ['true', '1'],
                         help='whether to crop input image, set false only when the test image are well cropped' )

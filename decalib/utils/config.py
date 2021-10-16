@@ -15,6 +15,7 @@ cfg.device_id = '0'
 
 cfg.pretrained_modelpath = os.path.join(cfg.deca_dir, 'data', 'deca_model.tar')
 cfg.output_dir = ''
+cfg.rasterizer_type = 'pytorch3d'
 # ---------------------------------------------------------------------------- #
 # Options for Face model
 # ---------------------------------------------------------------------------- #

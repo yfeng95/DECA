@@ -28,6 +28,7 @@ from decalib.deca import DECA
 from decalib.datasets import datasets 
 from decalib.utils import util
 from decalib.utils.rotation_converter import batch_euler2axis, deg2rad
+from decalib.utils.config import cfg as deca_cfg
 
 def main(args):
     savefolder = args.savefolder
@@ -38,7 +39,8 @@ def main(args):
     testdata = datasets.TestData(args.inputpath, iscrop=args.iscrop, face_detector=args.detector)
     expdata = datasets.TestData(args.exp_path, iscrop=args.iscrop, face_detector=args.detector)
     # DECA
-    deca = DECA(device=device)
+    deca_cfg.rasterizer_type = args.rasterizer_type
+    deca = DECA(config=deca_cfg, device=device)
 
     visdict_list_list = []
     for i in range(len(testdata)):
@@ -118,6 +120,9 @@ if __name__ == '__main__':
                         help='path to the output directory, where results(obj, txt files) will be stored.')
     parser.add_argument('--device', default='cuda', type=str,
                         help='set device, cpu for using cpu' )
+    # rendering option
+    parser.add_argument('--rasterizer_type', default='standard', type=str,
+                        help='rasterizer type: pytorch3d or standard' )
     # process test images
     parser.add_argument('--iscrop', default=True, type=lambda x: x.lower() in ['true', '1'],
                         help='whether to crop input image, set false only when the test image are well cropped' )

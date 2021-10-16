@@ -38,6 +38,7 @@ def main(args):
 
     # run DECA
     deca_cfg.model.use_tex = args.useTex
+    deca_cfg.rasterizer_type = args.rasterizer_type
     deca = DECA(config = deca_cfg, device=device)
     # for i in range(len(testdata)):
     for i in tqdm(range(len(testdata))):
@@ -85,6 +86,9 @@ if __name__ == '__main__':
                         help='whether to crop input image, set false only when the test image are well cropped' )
     parser.add_argument('--detector', default='fan', type=str,
                         help='detector for cropping face, check decalib/detectors.py for details' )
+    # rendering option
+    parser.add_argument('--rasterizer_type', default='standard', type=str,
+                        help='rasterizer type: pytorch3d or standard' )
     # save
     parser.add_argument('--useTex', default=False, type=lambda x: x.lower() in ['true', '1'],
                         help='whether to use FLAME texture model to generate uv texture map, \

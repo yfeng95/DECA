@@ -1,4 +1,4 @@
-# DECA: Detailed Expression Capture and Animation
+# DECA: Detailed Expression Capture and Animation (SIGGRAPH2021)
 
 <p align="center"> 
 <img src="TestSamples/teaser/results/teaser.gif">

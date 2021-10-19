@@ -575,6 +575,23 @@ def dict_tensor2npy(tensor_dict):
     return npy_dict
         
 # ---------------------------------- visualization
+def render_overlap(src_img, trg_img_data):
+    '''
+    warp source image to match with target background image
+    '''
+    center = trg_img_data['center']
+    size = trg_img_data['size']
+    src_pts = np.array([[0,0], [0,src_img.shape[2] - 1], 
+                        [src_img.shape[3] - 1, 0], [src_img.shape[3] - 1, src_img.shape[2] - 1]])
+    dst_pts = np.array([[center[0]-size, center[1]-size], [center[0]-size, center[1]+size], 
+                        [center[0]+size, center[1]-size], [center[0]+size, center[1]+size]])
+    
+    tform = estimate_transform('similarity', src_pts, dst_pts)
+    dst_image = warp(src_img[0].detach().cpu().numpy().transpose(1,2,0), tform.inverse, 
+                    output_shape=(trg_img_data['original_image'].shape[1], trg_img_data['original_image'].shape[2]))
+    dst_image = torch.tensor(dst_image.transpose(2,0,1)).float()
+    return dst_image
+
 end_list = np.array([17, 22, 27, 42, 48, 31, 36, 68], dtype = np.int32) - 1
 def plot_kpts(image, kpts, color = 'r'):
     ''' Draw 68 key points

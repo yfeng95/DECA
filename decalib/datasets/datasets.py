@@ -139,5 +139,7 @@ class TestData(Dataset):
         return {'image': torch.tensor(dst_image).float(),
                 'imagename': imagename,
                 # 'tform': tform,
-                # 'original_image': torch.tensor(image.transpose(2,0,1)).float(),
+                'center': center,
+                'size': size,
+                'original_image': torch.tensor(image.transpose(2,0,1)).float(),
                 }

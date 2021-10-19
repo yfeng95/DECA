@@ -224,12 +224,28 @@ class DECA(nn.Module):
                 uv_texture_gt = uv_gt[:,:3,:,:]*self.uv_face_eye_mask + (torch.ones_like(uv_gt[:,:3,:,:])*(1-self.uv_face_eye_mask)*0.7)
             
             opdict['uv_texture_gt'] = uv_texture_gt
+
+            offsets = [1, -1]
+            shifted_shapes = []
+            for offset1 in offsets:
+                for offset2 in offsets:
+                    shift_offset = torch.zeros_like(verts)
+                    shift_offset[:,:,0] = shift_offset[:,:,0] + offset2
+                    shift_offset[:,:,1] = shift_offset[:,:,1] + offset1
+                    shifted_shapes.append(self.render.render_shape(verts, trans_verts+shift_offset))
+            
+            shifted_shape_lt, shifted_shape_rt, shifted_shape_lb, shifted_shape_rb = shifted_shapes
+
             visdict = {
                 'inputs': images, 
                 'landmarks2d': util.tensor_vis_landmarks(images, landmarks2d),
                 'landmarks3d': util.tensor_vis_landmarks(images, landmarks3d),
                 'shape_images': shape_images,
-                'shape_detail_images': shape_detail_images
+                'shape_detail_images': shape_detail_images,
+                'shifted_shape_lt': shifted_shape_lt,
+                'shifted_shape_rt': shifted_shape_rt,
+                'shifted_shape_lb': shifted_shape_lb,
+                'shifted_shape_rb': shifted_shape_rb
             }
             if self.cfg.model.use_tex:
                 visdict['rendered_images'] = ops['images']

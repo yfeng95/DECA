@@ -70,6 +70,25 @@ def main(args):
                     continue
                 image  =util.tensor2image(visdict[vis_name][0])
                 cv2.imwrite(os.path.join(savefolder, name, name + '_' + vis_name +'.jpg'), util.tensor2image(visdict[vis_name][0]))
+            # overlap on input (face segmented) image
+            wfp = os.path.join(savefolder, name, name + '_' + 'overlap' +'.jpg')
+            alpha = 0.6
+            deca.render.render_shape(opdict['verts'], opdict['trans_verts'])
+            res = cv2.addWeighted(util.tensor2image(visdict['inputs'][0]), 1 - alpha, util.tensor2image(visdict['shape_detail_images'][0]), alpha, 0)
+            cv2.imwrite(wfp, res)
+            # save original image
+            cv2.imwrite(os.path.join(savefolder, name, name + '_' + 'original_image' +'.jpg'), util.tensor2image(testdata[i]['original_image']))
+            # get full shape image
+            shape_full = torch.cat((torch.cat((visdict['shifted_shape_lt'], visdict['shifted_shape_rt']), 3),
+                                    torch.cat((visdict['shifted_shape_lb'], visdict['shifted_shape_rb']), 3)),2)
+            cv2.imwrite(os.path.join(savefolder, name, name + '_' + 'shape_full' +'.jpg'), util.tensor2image(shape_full[0]))
+            # overlap full shape image to original image
+            wfp = os.path.join(savefolder, name, name + '_' + 'original_overlap' +'.jpg')
+            dst_image = util.render_overlap(shape_full, testdata[i])
+            #cv2.imwrite(os.path.join(savefolder, name, name + '_' + 'shape_trans' +'.jpg'), util.tensor2image(dst_image)) #.transpose(2,0,1).float()
+            alpha = 0.6
+            res = cv2.addWeighted(util.tensor2image(testdata[i]['original_image']), 1 - alpha, util.tensor2image(dst_image), alpha, 0)
+            cv2.imwrite(wfp, res)
     print(f'-- please check the results in {savefolder}')
         
 if __name__ == '__main__':

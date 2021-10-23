@@ -30,6 +30,7 @@ from .models.FLAME import FLAME, FLAMETex
 from .models.decoders import Generator
 from .utils import util
 from .utils.rotation_converter import batch_euler2axis
+from .utils.tensor_cropper import transform_points
 from .datasets import datasets
 from .utils.config import cfg
 torch.backends.cudnn.benchmark = True
@@ -124,6 +125,7 @@ class DECA(nn.Module):
         dense_vertices = uv_detail_vertices.permute(0,2,3,1).reshape([batch_size, -1, 3])
         uv_detail_normals = util.vertex_normals(dense_vertices, self.render.dense_faces.expand(batch_size, -1, -1))
         uv_detail_normals = uv_detail_normals.reshape([batch_size, uv_coarse_vertices.shape[2], uv_coarse_vertices.shape[3], 3]).permute(0,3,1,2)
+        uv_detail_normals = uv_detail_normals*self.uv_face_eye_mask + uv_coarse_normals*(1-self.uv_face_eye_mask)
         return uv_detail_normals
 
     def visofp(self, normals):
@@ -155,7 +157,8 @@ class DECA(nn.Module):
         return codedict
 
     # @torch.no_grad()
-    def decode(self, codedict, rendering=True, iddict=None, vis_lmk=True, return_vis=True, use_detail=True):
+    def decode(self, codedict, rendering=True, iddict=None, vis_lmk=True, return_vis=True, use_detail=True,
+                render_orig=False, original_image=None, tform=None):
         images = codedict['images']
         batch_size = images.shape[0]
         
@@ -178,6 +181,7 @@ class DECA(nn.Module):
             'landmarks3d': landmarks3d,
             'landmarks3d_world': landmarks3d_world,
         }
+
         ## rendering
         if rendering:
             ops = self.render(verts, trans_verts, albedo, codedict['light'])
@@ -209,10 +213,23 @@ class DECA(nn.Module):
             opdict['landmarks3d'] = landmarks3d
 
         if return_vis:
+            if render_orig and original_image is not None and tform is not None:
+                points_scale = [self.image_size, self.image_size]
+                _, _, h, w = original_image.shape
+                # import ipdb; ipdb.set_trace()
+                trans_verts = transform_points(trans_verts, tform, points_scale, [h, w])
+                landmarks2d = transform_points(landmarks2d, tform, points_scale, [h, w])
+                landmarks3d = transform_points(landmarks3d, tform, points_scale, [h, w])
+                background = original_image
+                images = original_image
+            else:
+                h, w = self.image_size, self.image_size
+                background = None
             ## render shape
-            shape_images = self.render.render_shape(verts, trans_verts)
-            detail_normal_images = F.grid_sample(uv_detail_normals, ops['grid'], align_corners=False)*ops['alpha_images']
-            shape_detail_images = self.render.render_shape(verts, trans_verts, detail_normal_images=detail_normal_images)
+            shape_images, _, grid, alpha_images = self.render.render_shape(verts, trans_verts, h=h, w=w, images=background, return_grid=True)
+            detail_normal_images = F.grid_sample(uv_detail_normals, grid, align_corners=False)*alpha_images
+            shape_detail_images = self.render.render_shape(verts, trans_verts, detail_normal_images=detail_normal_images, h=h, w=w, images=background)
+            
             ## extract texture
             ## TODO: current resolution 256x256, support higher resolution, and add visibility
             uv_pverts = self.render.world2uv(trans_verts)
@@ -233,18 +250,27 @@ class DECA(nn.Module):
             }
             if self.cfg.model.use_tex:
                 visdict['rendered_images'] = ops['images']
+
             return opdict, visdict
 
         else:
             return opdict
 
-    def visualize(self, visdict, size=None):
+    def visualize(self, visdict, size=224, dim=2):
+        '''
+        image range should be [0,1]
+        dim: 2 for horizontal. 1 for vertical
+        '''
+        assert dim == 1 or dim==2
         grids = {}
-        if size is None:
-            size = self.image_size
         for key in visdict:
-            grids[key] = torchvision.utils.make_grid(F.interpolate(visdict[key], [size, size])).detach().cpu()
-        grid = torch.cat(list(grids.values()), 2)
+            _,_,h,w = visdict[key].shape
+            if dim == 2:
+                new_h = size; new_w = int(w*size/h)
+            elif dim == 1:
+                new_h = int(h*size/w); new_w = size
+            grids[key] = torchvision.utils.make_grid(F.interpolate(visdict[key], [new_h, new_w]).detach().cpu())
+        grid = torch.cat(list(grids.values()), dim)
         grid_image = (grid.numpy().transpose(1,2,0).copy()*255)[:,:,[2,1,0]]
         grid_image = np.minimum(np.maximum(grid_image, 0), 255).astype(np.uint8)
         return grid_image

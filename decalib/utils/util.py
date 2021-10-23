@@ -590,6 +590,7 @@ def plot_kpts(image, kpts, color = 'r'):
         c = (255, 0, 0)
     image = image.copy()
     kpts = kpts.copy()
+    radius = min(int(min(image.shape[0], image.shape[1])/200), 1)
     for i in range(kpts.shape[0]):
         st = kpts[i, :2]
         if kpts.shape[1]==4:
@@ -597,11 +598,11 @@ def plot_kpts(image, kpts, color = 'r'):
                 c = (0, 255, 0)
             else:
                 c = (0, 0, 255)
-        image = cv2.circle(image,(int(st[0]), int(st[1])), 1, c, 2)  
         if i in end_list:
             continue
         ed = kpts[i + 1, :2]
-        image = cv2.line(image, (int(st[0]), int(st[1])), (int(ed[0]), int(ed[1])), (255, 255, 255), 1)
+        image = cv2.line(image, (int(st[0]), int(st[1])), (int(ed[0]), int(ed[1])), (255, 255, 255), radius)
+        image = cv2.circle(image,(int(st[0]), int(st[1])), radius, c, radius*2)  
 
     return image
 
@@ -639,7 +640,8 @@ def tensor_vis_landmarks(images, landmarks, gt_landmarks=None, color = 'g', isSc
         image = image.transpose(1,2,0)[:,:,[2,1,0]].copy(); image = (image*255)
         if isScale:
             predicted_landmark = predicted_landmarks[i]
-            predicted_landmark[...,:3] = predicted_landmark[...,:3]*image.shape[0]/2 + image.shape[0]/2
+            predicted_landmark[...,0] = predicted_landmark[...,0]*image.shape[1]/2 + image.shape[1]/2
+            predicted_landmark[...,1] = predicted_landmark[...,1]*image.shape[0]/2 + image.shape[0]/2
         else:
             predicted_landmark = predicted_landmarks[i]
         if predicted_landmark.shape[0] == 68:

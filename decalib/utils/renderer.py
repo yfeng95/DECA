@@ -78,7 +78,8 @@ class StandardRasterizer(nn.Module):
         vertices[...,1] = vertices[..., 1]*h/2 + h/2
         vertices[...,0] = w - 1 - vertices[..., 0]
         vertices[...,1] = h - 1 - vertices[..., 1]
-        vertices[...,:2] = -1 + (2*vertices[...,:2] + 1)/h
+        vertices[...,0] = -1 + (2*vertices[...,0] + 1)/w
+        vertices[...,1] = -1 + (2*vertices[...,1] + 1)/h
         #
         vertices = vertices.clone().float()
         vertices[...,0] = vertices[..., 0]*w/2 + w/2 
@@ -105,6 +106,7 @@ class StandardRasterizer(nn.Module):
         return pixel_vals
 
 class Pytorch3dRasterizer(nn.Module):
+    ## TODO: add support for rendering non-squared images, since pytorc3d supports this now
     """  Borrowed from https://github.com/facebookresearch/pytorch3d
     Notice:
         x,y,z are in image space, normalized
@@ -321,7 +323,8 @@ class SRenderY(nn.Module):
         shading = normals_dot_lights[:,:,:,None]*light_intensities[:,:,None,:]
         return shading.mean(1)
 
-    def render_shape(self, vertices, transformed_vertices, images=None, detail_normal_images=None, lights=None):
+    def render_shape(self, vertices, transformed_vertices, colors = None, images=None, detail_normal_images=None, 
+                lights=None, return_grid=False, uv_detail_normals=None, h=None, w=None):
         '''
         -- rendering shape with detail normal map
         '''
@@ -345,13 +348,16 @@ class SRenderY(nn.Module):
         face_vertices = util.face_vertices(vertices, self.faces.expand(batch_size, -1, -1))
         normals = util.vertex_normals(vertices, self.faces.expand(batch_size, -1, -1)); face_normals = util.face_vertices(normals, self.faces.expand(batch_size, -1, -1))
         transformed_normals = util.vertex_normals(transformed_vertices, self.faces.expand(batch_size, -1, -1)); transformed_face_normals = util.face_vertices(transformed_normals, self.faces.expand(batch_size, -1, -1))
-        attributes = torch.cat([self.face_colors.expand(batch_size, -1, -1, -1), 
+        if colors is None:
+            colors = self.face_colors.expand(batch_size, -1, -1, -1)
+        attributes = torch.cat([colors, 
                         transformed_face_normals.detach(), 
                         face_vertices.detach(), 
-                        face_normals], 
+                        face_normals,
+                        self.face_uvcoords.expand(batch_size, -1, -1, -1)], 
                         -1)
         # rasterize
-        rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes)
+        rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes, h, w)
 
         ####
         alpha_images = rendering[:, -1, :, :][:, None, :, :].detach()
@@ -377,7 +383,12 @@ class SRenderY(nn.Module):
             shape_images = shaded_images*alpha_images + torch.zeros_like(shaded_images).to(vertices.device)*(1-alpha_images)
         else:
             shape_images = shaded_images*alpha_images + images*(1-alpha_images)
-        return shape_images
+        if return_grid:
+            uvcoords_images = rendering[:, 12:15, :, :]; 
+            grid = (uvcoords_images).permute(0, 2, 3, 1)[:, :, :, :2]
+            return shape_images, normal_images, grid, alpha_images
+        else:
+            return shape_images
     
     def render_depth(self, transformed_vertices):
         '''

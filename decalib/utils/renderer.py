@@ -129,14 +129,23 @@ class Pytorch3dRasterizer(nn.Module):
         raster_settings = util.dict2obj(raster_settings)
         self.raster_settings = raster_settings
 
-    def forward(self, vertices, faces, attributes=None):
+    def forward(self, vertices, faces, attributes=None, h=None, w=None):
         fixed_vertices = vertices.clone()
         fixed_vertices[...,:2] = -fixed_vertices[...,:2]
-        meshes_screen = Meshes(verts=fixed_vertices.float(), faces=faces.long())
         raster_settings = self.raster_settings
+        if h is None and w is None:
+            image_size = raster_settings.image_size
+        else:
+            image_size = [h, w]
+            if h>w:
+                fixed_vertices[..., 1] = fixed_vertices[..., 1]*h/w
+            else:
+                fixed_vertices[..., 0] = fixed_vertices[..., 0]*w/h
+            
+        meshes_screen = Meshes(verts=fixed_vertices.float(), faces=faces.long())
         pix_to_face, zbuf, bary_coords, dists = rasterize_meshes(
             meshes_screen,
-            image_size=raster_settings.image_size,
+            image_size=image_size,
             blur_radius=raster_settings.blur_radius,
             faces_per_pixel=raster_settings.faces_per_pixel,
             bin_size=raster_settings.bin_size,
@@ -156,6 +165,8 @@ class Pytorch3dRasterizer(nn.Module):
         pixel_vals[mask] = 0  # Replace masked values in output.
         pixel_vals = pixel_vals[:,:,:,0].permute(0,3,1,2)
         pixel_vals = torch.cat([pixel_vals, vismask[:,:,:,0][:,None,:,:]], dim=1)
+        print(image_size)
+        # import ipdb; ipdb.set_trace()
         return pixel_vals
 
 class SRenderY(nn.Module):
@@ -357,6 +368,7 @@ class SRenderY(nn.Module):
                         self.face_uvcoords.expand(batch_size, -1, -1, -1)], 
                         -1)
         # rasterize
+        # import ipdb; ipdb.set_trace()
         rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes, h, w)
 
         ####

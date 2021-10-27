@@ -11,5 +11,6 @@ torch==1.6.0   # for compatible with pytorch3d
 torchvision==0.7.0
 face-alignment
 yacs==0.1.8
+kornia==0.4.0
 ninja
 # pytorch3d    

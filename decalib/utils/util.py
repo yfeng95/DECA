@@ -590,7 +590,7 @@ def plot_kpts(image, kpts, color = 'r'):
         c = (255, 0, 0)
     image = image.copy()
     kpts = kpts.copy()
-    radius = min(int(min(image.shape[0], image.shape[1])/200), 1)
+    radius = max(int(min(image.shape[0], image.shape[1])/200), 1)
     for i in range(kpts.shape[0]):
         st = kpts[i, :2]
         if kpts.shape[1]==4:

@@ -28,15 +28,15 @@ import scipy.io
 from . import detectors
 
 def video2sequence(video_path):
-    videofolder = video_path.split('.')[0]
+    videofolder = os.path.splitext(video_path)[0]
     os.makedirs(videofolder, exist_ok=True)
-    video_name = video_path.split('/')[-1].split('.')[0]
+    video_name = os.path.splitext(os.path.split(video_path)[-1])[0]
     vidcap = cv2.VideoCapture(video_path)
     success,image = vidcap.read()
     count = 0
     imagepath_list = []
     while success:
-        imagepath = '{}/{}_frame{:04d}.jpg'.format(videofolder, video_name, count)
+        imagepath = os.path.join(videofolder, f'{video_name}_frame{count:04d}.jpg')
         cv2.imwrite(imagepath, image)     # save frame as JPEG file
         success,image = vidcap.read()
         count += 1
@@ -92,7 +92,7 @@ class TestData(Dataset):
 
     def __getitem__(self, index):
         imagepath = self.imagepath_list[index]
-        imagename = imagepath.split('/')[-1].split('.')[0]
+        imagename = os.path.splitext(os.path.split(imagepath)[-1])[0]
 
         image = np.array(imread(imagepath))
         if len(image.shape) == 2:
@@ -103,8 +103,8 @@ class TestData(Dataset):
         h, w, _ = image.shape
         if self.iscrop:
             # provide kpt as txt file, or mat file (for AFLW2000)
-            kpt_matpath = imagepath.replace('.jpg', '.mat').replace('.png', '.mat')
-            kpt_txtpath = imagepath.replace('.jpg', '.txt').replace('.png', '.txt')
+            kpt_matpath = os.path.splitext(imagepath)[0]+'.mat'
+            kpt_txtpath = os.path.splitext(imagepath)[0]+'.txt'
             if os.path.exists(kpt_matpath):
                 kpt = scipy.io.loadmat(kpt_matpath)['pt3d_68'].T        
                 left = np.min(kpt[:,0]); right = np.max(kpt[:,0]); 

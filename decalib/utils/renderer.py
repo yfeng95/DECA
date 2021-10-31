@@ -165,7 +165,7 @@ class Pytorch3dRasterizer(nn.Module):
         pixel_vals[mask] = 0  # Replace masked values in output.
         pixel_vals = pixel_vals[:,:,:,0].permute(0,3,1,2)
         pixel_vals = torch.cat([pixel_vals, vismask[:,:,:,0][:,None,:,:]], dim=1)
-        print(image_size)
+        # print(image_size)
         # import ipdb; ipdb.set_trace()
         return pixel_vals
 

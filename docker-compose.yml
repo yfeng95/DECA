@@ -1,0 +1,15 @@
+version: '3'
+services:     
+  deca-jupyter:
+    container_name: deca-jupyter
+    network_mode: "host"
+    build:
+      dockerfile: Dockerfile
+      context: .
+    devices:
+      - /dev/nvidia0:/dev/nvidia0
+      - /dev/nvidiactl:/dev/nvidiactl
+      - /dev/nvidia-modeset:/dev/nvidia-modeset
+      - /dev/nvidia-uvm:/dev/nvidia-uvm
+      - /dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools
+    entrypoint: 'jupyter notebook --allow-root --NotebookApp.allow_origin=https://colab.research.google.com --port=8080 --NotebookApp.port_retries=0'

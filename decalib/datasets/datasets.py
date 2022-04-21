@@ -27,7 +27,7 @@ import scipy.io
 
 from . import detectors
 
-def video2sequence(video_path):
+def video2sequence(video_path, sample_step=10):
     videofolder = os.path.splitext(video_path)[0]
     os.makedirs(videofolder, exist_ok=True)
     video_name = os.path.splitext(os.path.split(video_path)[-1])[0]
@@ -36,6 +36,7 @@ def video2sequence(video_path):
     count = 0
     imagepath_list = []
     while success:
+        # if count%sample_step == 0:
         imagepath = os.path.join(videofolder, f'{video_name}_frame{count:04d}.jpg')
         cv2.imwrite(imagepath, image)     # save frame as JPEG file
         success,image = vidcap.read()
@@ -45,7 +46,7 @@ def video2sequence(video_path):
     return imagepath_list
 
 class TestData(Dataset):
-    def __init__(self, testpath, iscrop=True, crop_size=224, scale=1.25, face_detector='fan'):
+    def __init__(self, testpath, iscrop=True, crop_size=224, scale=1.25, face_detector='fan', sample_step=10):
         '''
             testpath: folder, imagepath_list, image path, video path
         '''
@@ -56,7 +57,7 @@ class TestData(Dataset):
         elif os.path.isfile(testpath) and (testpath[-3:] in ['jpg', 'png', 'bmp']):
             self.imagepath_list = [testpath]
         elif os.path.isfile(testpath) and (testpath[-3:] in ['mp4', 'csv', 'vid', 'ebm']):
-            self.imagepath_list = video2sequence(testpath)
+            self.imagepath_list = video2sequence(testpath, sample_step)
         else:
             print(f'please check the test path: {testpath}')
             exit()
@@ -93,7 +94,7 @@ class TestData(Dataset):
     def __getitem__(self, index):
         imagepath = self.imagepath_list[index]
         imagename = os.path.splitext(os.path.split(imagepath)[-1])[0]
-
+        print(imagename)
         image = np.array(imread(imagepath))
         if len(image.shape) == 2:
             image = image[:,:,None].repeat(1,1,3)

@@ -183,6 +183,19 @@ class DECA(nn.Module):
         }
 
         ## rendering
+        if return_vis and render_orig and original_image is not None and tform is not None:
+            points_scale = [self.image_size, self.image_size]
+            _, _, h, w = original_image.shape
+            # import ipdb; ipdb.set_trace()
+            trans_verts = transform_points(trans_verts, tform, points_scale, [h, w])
+            landmarks2d = transform_points(landmarks2d, tform, points_scale, [h, w])
+            landmarks3d = transform_points(landmarks3d, tform, points_scale, [h, w])
+            background = original_image
+            images = original_image
+        else:
+            h, w = self.image_size, self.image_size
+            background = None
+
         if rendering:
             ops = self.render(verts, trans_verts, albedo, codedict['light'])
             ## output
@@ -213,18 +226,6 @@ class DECA(nn.Module):
             opdict['landmarks3d'] = landmarks3d
 
         if return_vis:
-            if render_orig and original_image is not None and tform is not None:
-                points_scale = [self.image_size, self.image_size]
-                _, _, h, w = original_image.shape
-                # import ipdb; ipdb.set_trace()
-                trans_verts = transform_points(trans_verts, tform, points_scale, [h, w])
-                landmarks2d = transform_points(landmarks2d, tform, points_scale, [h, w])
-                landmarks3d = transform_points(landmarks3d, tform, points_scale, [h, w])
-                background = original_image
-                images = original_image
-            else:
-                h, w = self.image_size, self.image_size
-                background = None
             ## render shape
             shape_images, _, grid, alpha_images = self.render.render_shape(verts, trans_verts, h=h, w=w, images=background, return_grid=True)
             detail_normal_images = F.grid_sample(uv_detail_normals, grid, align_corners=False)*alpha_images

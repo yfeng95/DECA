@@ -218,7 +218,7 @@ class SRenderY(nn.Module):
                            (pi/4)*(3)*(np.sqrt(5/(12*pi))), (pi/4)*(3/2)*(np.sqrt(5/(12*pi))), (pi/4)*(1/2)*(np.sqrt(5/(4*pi)))]).float()
         self.register_buffer('constant_factor', constant_factor)
     
-    def forward(self, vertices, transformed_vertices, albedos, lights=None, light_type='point'):
+    def forward(self, vertices, transformed_vertices, albedos, lights=None, h=None, w=None, light_type='point', background=None):
         '''
         -- Texture Rendering
         vertices: [batch_size, V, 3], vertices in world space, for calculating normals, then shading
@@ -244,7 +244,7 @@ class SRenderY(nn.Module):
                                 face_normals], 
                                 -1)
         # rasterize
-        rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes)
+        rendering = self.rasterizer(transformed_vertices, self.faces.expand(batch_size, -1, -1), attributes, h, w)
         
         ####
         # vis mask
@@ -276,9 +276,16 @@ class SRenderY(nn.Module):
             images = albedo_images
             shading_images = images.detach()*0.
 
+        if background is not None:
+            images = images*alpha_images + background*(1-alpha_images)
+            albedo_images = albedo_images*alpha_images + background*(1-alpha_images)
+        else:
+            images = images*alpha_images 
+            albedo_images = albedo_images*alpha_images 
+
         outputs = {
-            'images': images*alpha_images,
-            'albedo_images': albedo_images*alpha_images,
+            'images': images,
+            'albedo_images': albedo_images,
             'alpha_images': alpha_images,
             'pos_mask': pos_mask,
             'shading_images': shading_images,

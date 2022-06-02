@@ -94,7 +94,6 @@ class TestData(Dataset):
     def __getitem__(self, index):
         imagepath = self.imagepath_list[index]
         imagename = os.path.splitext(os.path.split(imagepath)[-1])[0]
-        print(imagename)
         image = np.array(imread(imagepath))
         if len(image.shape) == 2:
             image = image[:,:,None].repeat(1,1,3)

@@ -1,0 +1,17 @@
+#to install all this requirements
+#`pip install -r requirements.txt`
+numpy==1.18.5
+scipy==1.4.1 
+chumpy==0.69
+scikit-image==0.15 
+opencv-python==4.1.1 
+scikit-image==0.15     #skimage
+PyYAML==5.1.1         
+torch==1.6.0   # for compatible with pytorch3d
+torchvision==0.7.0
+face-alignment
+yacs==0.1.8
+kornia==0.4.0
+ninja
+fvcore
+# pytorch3d    

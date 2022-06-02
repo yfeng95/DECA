@@ -277,8 +277,8 @@ class SRenderY(nn.Module):
             shading_images = images.detach()*0.
 
         if background is not None:
-            images = images*alpha_images + background*(1-alpha_images)
-            albedo_images = albedo_images*alpha_images + background*(1-alpha_images)
+            images = images*alpha_images + background*(1.-alpha_images)
+            albedo_images = albedo_images*alpha_images + background*(1.-alpha_images)
         else:
             images = images*alpha_images 
             albedo_images = albedo_images*alpha_images 

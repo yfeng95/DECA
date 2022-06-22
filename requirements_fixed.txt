@@ -1,6 +1,6 @@
 #to install all this requirements
 #`pip install -r requirements.txt`
-numpy==1.18.5
+numpy==1.22.0
 scipy==1.4.1 
 chumpy==0.69
 scikit-image==0.15 

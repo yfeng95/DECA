@@ -17,7 +17,7 @@ The main features:
 * **Animation:** animate the face with realistic wrinkle deformations.
 * **Robustness:** tested on facial images in unconstrained conditions.  Our method is robust to various poses, illuminations and occlusions. 
 * **Accurate:** state-of-the-art 3D face shape reconstruction on the [NoW Challenge](https://ringnet.is.tue.mpg.de/challenge) benchmark dataset.
-
+  
 ## Getting Started
 Clone the repo:
   ```bash
@@ -122,6 +122,10 @@ For more details of the evaluation, please check our [arXiv paper](https://arxiv
     ```
     In the yml files, write the right path for 'output_dir' and 'pretrained_modelpath'.  
     You can also use [released model](https://drive.google.com/file/d/1rp8kdyLPvErw2dTmqtjISRVvQLj6Yzje/view) as pretrained model, then ignor the pretrain step.
+
+## Related works:  
+* for better emotion prediction: [EMOCA](https://github.com/radekd91/emoca)  
+* for better skin estimation: [TRUST](https://github.com/HavenFeng/TRUST)
 
 ## Citation
 If you find our work useful to your research, please consider citing:

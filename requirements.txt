@@ -7,7 +7,7 @@ scikit-image>=0.15
 opencv-python>=4.1.1 
 scikit-image>=0.15     #skimage
 PyYAML==5.1.1         
-torch==1.6.0   # for compatible with pytorch3d
+torch==1.13.1   # for compatible with pytorch3d
 torchvision==0.7.0
 face-alignment
 yacs==0.1.8
